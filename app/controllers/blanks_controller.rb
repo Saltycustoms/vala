@@ -4,7 +4,7 @@ class BlanksController < ApplicationController
   # GET /blanks
   # GET /blanks.json
   def index
-    @blanks = Blank.all
+    @blanks = Blank.all.page(params[:page]).per(50)
   end
 
   # GET /blanks/1

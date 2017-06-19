@@ -1,14 +1,6 @@
-<p id="notice"><%= notice %></p>
+<%= render "shared/crude/show", resource: @blank, resource_fields: [:name, :brand] do |resource| %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @blank.name %>
-</p>
-
-<p>
-  <strong>Brand:</strong>
-  <%= @blank.brand %>
-</p>
+<% end %>
 
 <%= link_to 'Edit', edit_blank_path(@blank) %> |
 <%= link_to 'Back', blanks_path %>

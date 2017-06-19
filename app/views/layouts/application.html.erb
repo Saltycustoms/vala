@@ -12,6 +12,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% flash.each do |name, msg| -%>
+      <div class="row column">
+        <%= content_tag :div, msg, class: "callout #{name}" %>
+      </div>
+    <% end -%>
+
+    <div class="row">
+      <div class="small-2 column">
+        <%= render "layouts/sidebar" %>
+      </div>
+      <div class="small-10 column">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

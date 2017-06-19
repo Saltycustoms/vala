@@ -18,4 +18,9 @@
 
 $(document).on('turbolinks:load', function() {
   $(function(){ $(document).foundation(); });
+
+  $(function() {
+    pathing = $('ul.sidebar').data("controller") + '-' + $('ul.sidebar').data("action")
+    $('[data-pathing=' + pathing + ']').addClass('active')
+  })
 });

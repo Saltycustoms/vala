@@ -1,0 +1,7 @@
+<dl>
+  <% resource_fields.each do |rf| %>
+    <dt><%= rf %></dt>
+    <dd><%= resource.send(rf) %></dd>
+  <% end %>
+  <%= yield(resource) %>
+</dl>
