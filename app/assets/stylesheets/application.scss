@@ -13,3 +13,14 @@
  */
 
 @import "foundation_and_overrides";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+dt {
+  padding-top: $global-padding;
+}
+
+.remove-button {
+  margin-bottom: 0;
+  margin-top: 24px;
+}

@@ -1,7 +1,31 @@
 <h1>Edit Blank</h1>
 
 <%= render "shared/crude/form", resource: @blank, resource_fields: [:name, :brand] do |f| %>
-
+  <h5>Sides</h5>
+  <div><%= f.link_to_add "Add a side", :sides, class: "button warning" %></div>
+  <%= f.fields_for :sides do |side_form| %>
+    <div class="row">
+      <div class="small-5 column">
+        <%= side_form.input :name %>
+      </div>
+      <div class="small-5 column">
+        <div class="row">
+          <div class="small-6 column">
+            <%= side_form.hidden_field :attachment, value: side_form.object.cached_attachment_data %>
+            <%= side_form.input :attachment, as: :file %>
+          </div>
+          <div class="small-6 column">
+            <%= image_tag side_form.object.attachment_url if side_form.object.attachment.presence %>
+          </div>
+        </div>
+      </div>
+      <div class="small-2 column">
+        <%= side_form.link_to_remove class: "button alert remove-button" do %>
+          <i class="fa fa-times" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
 <%= link_to 'Show', @blank %> |

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619065128) do
+ActiveRecord::Schema.define(version: 20170619090751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,4 +22,14 @@ ActiveRecord::Schema.define(version: 20170619065128) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sides", force: :cascade do |t|
+    t.string   "name"
+    t.text     "attachment_data"
+    t.integer  "blank_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["blank_id"], name: "index_sides_on_blank_id", using: :btree
+  end
+
+  add_foreign_key "sides", "blanks"
 end

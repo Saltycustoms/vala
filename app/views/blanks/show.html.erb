@@ -1,5 +1,14 @@
-<%= render "shared/crude/show", resource: @blank, resource_fields: [:name, :brand] do |resource| %>
-
+<%= render "shared/crude/show", resource_name: "Blank", resource: @blank, resource_fields: [:name, :brand] do |resource| %>
+  <div class="row">
+    <% @blank.sides.each do |side| %>
+      <div class="small-6 column">
+        <%= side.name %>
+      </div>
+      <div class="small-6 column">
+        <%= image_tag side.attachment_url %>  
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <%= link_to 'Edit', edit_blank_path(@blank) %> |

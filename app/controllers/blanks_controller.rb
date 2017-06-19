@@ -69,6 +69,6 @@ class BlanksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blank_params
-      params.require(:blank).permit(:name, :brand)
+      params.require(:blank).permit(:name, :brand, sides_attributes: [:id, :name, :attachment, :attachment_data, :_destroy])
     end
 end

@@ -1,4 +1,4 @@
-<%= simple_nested_form_for [resource] do |f| %>
+<%= simple_nested_form_for resource do |f| %>
   <% resource_fields.each do |field_name| %>
     <%= f.input field_name %>
   <% end %>
