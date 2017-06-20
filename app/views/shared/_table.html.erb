@@ -18,6 +18,9 @@
             <%=resource.send(rf)%>
           </td>
         <%end%>
+        <%  if defined?(edit) && edit %>
+          <td><%= link_to "Edit", [:edit, resource] %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

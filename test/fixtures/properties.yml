@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prop_type: 1
+  name: MyString
+  element_id: MyString
+  side: one
+
+two:
+  prop_type: 1
+  name: MyString
+  element_id: MyString
+  side: two

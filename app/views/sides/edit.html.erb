@@ -1,0 +1,33 @@
+<div class="row column">
+  <h1>Edit Side</h1>
+  <div class="row align-center">
+    <div class="column small-4">
+      <%= image_tag @side.attachment_url, class: "" %>
+    </div>
+  </div>
+  <%= simple_nested_form_for @side do |f| %>
+    <%= f.input :name %>
+    <%= f.fields_for :properties do |prop_form| %>
+      <div class="row">
+        <div class="column">
+          <%= prop_form.input :prop_type, collection: Property.prop_types.collect {|k,v| [k,k]} %>
+        </div>
+        <div class="column">
+          <%= prop_form.input :name %>
+        </div>
+        <div class="column">
+          <%= prop_form.input :element_id, label: "Element Id" %>
+        </div>
+        <div class="shrink column">
+          <%= prop_form.link_to_remove class: "button alert remove-button" do %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div><%= f.link_to_add "Add Property", :properties, class: "button warning" %></div>
+    <%= f.button :submit %>
+  <% end %>
+
+  <%= link_to "Back", @blank %>
+</div>

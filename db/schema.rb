@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620071755) do
+ActiveRecord::Schema.define(version: 20170620081645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 20170620071755) do
     t.index ["blank_id"], name: "index_products_on_blank_id", using: :btree
   end
 
+  create_table "properties", force: :cascade do |t|
+    t.integer  "prop_type"
+    t.string   "name"
+    t.string   "element_id"
+    t.integer  "side_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["side_id"], name: "index_properties_on_side_id", using: :btree
+  end
+
   create_table "sides", force: :cascade do |t|
     t.string   "name"
     t.text     "attachment_data"
@@ -80,6 +90,7 @@ ActiveRecord::Schema.define(version: 20170620071755) do
   add_foreign_key "color_options", "products"
   add_foreign_key "price_ranges", "products"
   add_foreign_key "products", "blanks"
+  add_foreign_key "properties", "sides"
   add_foreign_key "sides", "blanks"
   add_foreign_key "sizes", "products"
 end
