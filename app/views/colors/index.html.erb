@@ -1,0 +1,9 @@
+<%=
+  render "shared/crude/index",
+  resources: @colors,
+  resource_name: "Color",
+  resource_fields: [:id, :name, :hex],
+  edit: true,
+  show: true,
+  destroy: true
+%>
