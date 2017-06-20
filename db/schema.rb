@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620030456) do
+ActiveRecord::Schema.define(version: 20170620045542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,19 @@ ActiveRecord::Schema.define(version: 20170620030456) do
     t.string   "hex"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "price_ranges", force: :cascade do |t|
+    t.integer  "from_quantity"
+    t.integer  "to_quantity"
+    t.integer  "price_cents"
+    t.integer  "lower_rrp_cents"
+    t.integer  "higher_rrp_cents"
+    t.decimal  "commission"
+    t.integer  "product_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["product_id"], name: "index_price_ranges_on_product_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -46,6 +59,16 @@ ActiveRecord::Schema.define(version: 20170620030456) do
     t.index ["blank_id"], name: "index_sides_on_blank_id", using: :btree
   end
 
+  create_table "sizes", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_sizes_on_product_id", using: :btree
+  end
+
+  add_foreign_key "price_ranges", "products"
   add_foreign_key "products", "blanks"
   add_foreign_key "sides", "blanks"
+  add_foreign_key "sizes", "products"
 end

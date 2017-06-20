@@ -1,0 +1,24 @@
+<h3><%= resource_name.pluralize %></h3>
+<table>
+  <thead>
+    <tr>
+      <%resource_fields.each do |rf|%>
+        <th>
+          <%= rf.to_s.humanize %>
+        </th>
+      <%end%>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% resources.each do |resource| %>
+      <tr>
+        <%resource_fields.each do |rf|%>
+          <td>
+            <%=resource.send(rf)%>
+          </td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

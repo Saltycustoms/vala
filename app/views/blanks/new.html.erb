@@ -1,6 +1,5 @@
 <%= render "shared/crude/form", resource_name: "Blank", resource: @blank, resource_fields: [:name, :brand] do |f| %>
   <h3>Sides</h3>
-  <div><%= f.link_to_add "Add a side", :sides, class: "button warning" %></div>
   <%= f.fields_for :sides do |side_form| %>
     <div class="row">
       <div class="small-5 column">
@@ -24,4 +23,5 @@
       </div>
     </div>
   <% end %>
+  <div><%= f.link_to_add "Add a side", :sides, class: "button warning" %></div>
 <% end %>

@@ -1,14 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Blank:</strong>
-  <%= @product.blank %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= render "shared/crude/show", resource_name: "Product", resource: @product, resource_fields: [:name, :blank_name] do %>
+  <%= render "shared/table", resources: @product.sizes, resource_fields: [:name], resource_name: "Size" %>
+  <%= render "shared/table", resources: @product.price_ranges, resource_fields: [:from_quantity, :to_quantity, :price_cents, :lower_rrp_cents, :higher_rrp_cents, :commission], resource_name: "Price Range" %>
+<% end %>

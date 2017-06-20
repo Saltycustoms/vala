@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_quantity: 1
+  to_quantity: 1
+  price_cents: 1
+  lower_rrp_cents: 1
+  higher_rrp_cents: 1
+  commission: 9.99
+  product: one
+
+two:
+  from_quantity: 1
+  to_quantity: 1
+  price_cents: 1
+  lower_rrp_cents: 1
+  higher_rrp_cents: 1
+  commission: 9.99
+  product: two
