@@ -1,7 +1,22 @@
-<%= simple_nested_form_for resource do |f| %>
-  <% resource_fields.each do |field_name| %>
-    <%= f.input field_name %>
+<div class="row column">
+  <h1>
+  <% if resource.new_record? %>
+    <%= "New #{resource_name}" %>
+  <% else %>
+    <%= "Edit #{resource_name}" %>
   <% end %>
-  <%= yield f %>
-  <%= f.button :submit %>
-<% end %>
+  </h1>
+
+  <%= simple_nested_form_for resource do |f| %>
+    <% resource_fields.each do |field_name| %>
+      <%= f.input field_name %>
+    <% end %>
+    <%= yield f %>
+    <%= f.button :submit %>
+  <% end %>
+
+  <% if resource.persisted? %>
+    <%= link_to 'Show', [resource] %> |
+  <% end %>
+  <%= link_to 'Back', send("#{resource_name.downcase.pluralize}_path") %>
+</div>

@@ -16,8 +16,8 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-dt {
-  padding-top: $global-padding;
+dd {
+  padding-bottom: $global-padding;
 }
 
 .remove-button {

@@ -2,7 +2,7 @@
   <h1><%=resource_name.pluralize%></h1>
   <%= link_to "New #{resource_name}", [:new, resource_name.underscore], class: "button" %>
 
-  <table class="table">
+  <table>
     <thead>
       <tr>
         <%resource_fields.each do |rf|%>
