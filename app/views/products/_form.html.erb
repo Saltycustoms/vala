@@ -1,0 +1,58 @@
+<%= render "shared/crude/form", resource_name: "Product", resource: @product, resource_fields: [:name] do |f| %>
+  <%= f.association :blank %>
+  <%= f.association :colors, as: :check_boxes, wrapper_html: {class: "row"}, item_wrapper_class: "small-2 column" %>
+  <div class="row">
+    <div class="small-12 medium-4 column">
+      <h3>Sizes</h3>
+      <%= f.fields_for :sizes do |size_form| %>
+        <div class="row">
+          <div class="column">
+            <%= size_form.input :name %>
+          </div>
+          <div class="shrink column">
+            <%= size_form.link_to_remove class: "button alert remove-button" do %>
+              <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div><%= f.link_to_add "Add Size", :sizes, class: "button warning" %></div>
+    </div>
+    <div class="small-12 medium-8 column">
+      <h3>Price Range</h3>
+      <%= f.fields_for :price_ranges do |pr_form| %>
+        <div class="row align-middle">
+          <div class="column">
+            <div class="row">
+              <div class="small-6 large-4 column">
+                <%= pr_form.input :from_quantity, label: "From qty" %>
+              </div>
+              <div class="small-6 large-4 column">
+                <%= pr_form.input :to_quantity, label: "To qty" %>
+              </div>
+              <div class="small-6 large-4 column">
+                <%= pr_form.input :price_cents %>
+              </div>
+              <div class="small-6 large-4 column">
+                <%= pr_form.input :lower_rrp_cents %>
+              </div>
+              <div class="small-6 large-4 column">
+                <%= pr_form.input :higher_rrp_cents %>
+              </div>
+              <div class="small-6 large-4 column">
+                <%= pr_form.input :commission, label: "Commission (decimal)" %>
+              </div>
+            </div>
+          </div>
+          <div class="shrink column">
+            <%= pr_form.link_to_remove class: "button alert remove-button" do %>
+              <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+      <div><%= f.link_to_add "Add Price Range", :price_ranges, class: "button warning" %></div>
+    </div>
+  </div>
+<% end %>
