@@ -61,3 +61,4 @@ gem 'simple_form'
 gem 'nested_form'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'kaminari'
+gem "autoprefixer-rails"

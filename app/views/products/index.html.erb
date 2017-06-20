@@ -1,0 +1,9 @@
+<%=
+  render "shared/crude/index",
+  resources: @products,
+  resource_name: "Product",
+  resource_fields: [:id, :name],
+  edit: true,
+  show: true,
+  destroy: true
+%>

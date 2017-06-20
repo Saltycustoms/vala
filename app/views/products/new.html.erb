@@ -1,0 +1,3 @@
+<%= render "shared/crude/form", resource_name: "Product", resource: @product, resource_fields: [:name] do |f| %>
+  <%= f.association :blank %>
+<% end %>
