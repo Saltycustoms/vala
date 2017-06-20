@@ -4,7 +4,7 @@
     <div class="row">
       <% resource_fields.each do |rf| %>
         <div class="small-6 column">
-          <dt><%= rf %></dt>
+          <dt><%= rf.to_s.humanize %></dt>
           <dd><%= resource.send(rf) %></dd>
         </div>
       <% end %>

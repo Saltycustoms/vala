@@ -1,5 +1,6 @@
 <%= render "shared/crude/form", resource_name: "Product", resource: @product, resource_fields: [:name] do |f| %>
   <%= f.association :blank %>
+  <%= f.association :colors, as: :check_boxes, wrapper_html: {class: "row"}, item_wrapper_class: "small-2 column" %>
   <div class="row">
     <div class="small-12 medium-4 column">
       <h3>Sizes</h3>
