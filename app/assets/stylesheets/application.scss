@@ -29,3 +29,16 @@ dd {
   max-width: 100px;
   max-height: 100px;
 }
+
+.color {
+  &-checkbox {
+    appearance: none;
+  }
+  &-box {
+    cursor: pointer;
+  }
+}
+
+.bold {
+  font-weight: $global-weight-bold;
+}

@@ -1,6 +1,36 @@
 <%= render "shared/crude/form", resource_name: "Product", resource: @product, resource_fields: [:name] do |f| %>
   <%= f.association :blank %>
-  <%= f.association :colors, as: :check_boxes, label_html: {class: "small-12 column"}, wrapper_html: {class: "row"}, item_wrapper_class: "small-4 medium-3 large-2 column" %>
+
+  <div class="row">
+    <div class="small-12 column">
+      <%= label_tag("product_color_ids") do %>
+        <abbr title="required">*</abbr> Colors</label>
+      <% end %>
+      <%= hidden_field_tag "product[color_ids][]", "" %>
+    </div>
+    <% Color.all.each do |color| %>
+      <div class="small-4 medium-3 large-2 column color-checkbox">
+        <%= label_tag "product_color_ids_#{color.id}" do %>
+          <%= check_box_tag "product[color_ids][]", color.id, @product.colors.collect{|c| c.id}.include?(color.id), id: "product_color_ids_#{color.id}", class: "color-checkbox", data: {hex: color.hex} %>
+          <% if @product.colors.collect{|c| c.id}.include?(color.id) %>
+            <span class="color-box"><i class="fa fa-check-square" aria-hidden="true" style="color: <%= color.hex %>"></i></span>
+            <span class="color-name bold"><%= color.name %></span>
+          <% else %>
+            <span class="color-box"><i class="fa fa-square" aria-hidden="true" style="color: <%= color.hex %>"></i></span>
+            <span class="color-name"><%= color.name %></span>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if @product.errors.include?(:colors) %>
+      <div class="small-12 column">
+        <% @product.errors[:colors].each do |msg| %>
+          <small class="error"><%= msg %></small>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="row">
     <div class="small-12 medium-4 column">
       <h3>Sizes</h3>
