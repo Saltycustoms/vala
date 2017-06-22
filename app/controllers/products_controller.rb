@@ -1,6 +1,5 @@
 class ProductsController < ResourcesController
-  before_action :set_resource, only: [:show, :edit, :update, :destroy]
-
+  
   # POST /colors
   # POST /colors.json
   def create

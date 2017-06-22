@@ -1,5 +1,4 @@
 class BlanksController < ResourcesController
-  before_action :set_resource, only: [:show, :edit, :update, :destroy]
 
   # POST /colors
   # POST /colors.json
