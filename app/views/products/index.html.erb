@@ -2,7 +2,7 @@
   render "shared/crude/index",
   resources: @resources,
   resource_name: "Product",
-  resource_fields: [:id, :name],
+  resource_fields: controller.class.presentation_fields,
   edit: true,
   show: true,
   destroy: true
