@@ -36,6 +36,9 @@ dd {
   }
   &-box {
     cursor: pointer;
+    i {
+      border: 1px solid $medium-gray;
+    }
   }
 }
 
