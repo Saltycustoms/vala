@@ -1,3 +1,3 @@
-<%= render "shared/crude/show", resource_name: "Blank", resource: @blank, resource_fields: [:name, :brand] do %>
-  <%= render "shared/table", resources: @blank.sides, resource_fields: [:name, :preview, :add_ons], resource_name: "Side", edit: true %>
+<%= render "shared/crude/show", resource_name: "Blank", resource: @resource, resource_fields: [:name, :brand] do %>
+  <%= render "shared/table", resources: @resource.sides, resource_fields: [:name, :preview, :add_ons], resource_name: "Side", edit: true %>
 <% end %>

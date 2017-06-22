@@ -1,4 +1,4 @@
-<%= render "shared/crude/form", resource_name: "Blank", resource: @blank, resource_fields: [:name, :brand] do |f| %>
+<%= render "shared/crude/form", resource_name: "Blank", resource: @resource, resource_fields: [:name, :brand] do |f| %>
   <h3>Sides</h3>
   <%= f.fields_for :sides do |side_form| %>
     <div class="row">
