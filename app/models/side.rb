@@ -3,8 +3,6 @@ class Side < ApplicationRecord
   belongs_to :blank
   validates :name, presence: true
   validates :attachment, presence: true
-  has_many :properties, dependent: :destroy
-  accepts_nested_attributes_for :properties, allow_destroy: true, reject_if: proc { |attributes| attributes.all? { |key, value| key == "_destroy" || value.blank? } }
 
   def preview
     if attachment.exists?
