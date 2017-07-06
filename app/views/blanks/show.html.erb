@@ -1,3 +1,6 @@
 <%= render "shared/crude/show", resource_name: "Blank", resource: @resource, resource_fields: [:name, :brand] do %>
-  <%= render "shared/table", resources: @resource.sides, resource_fields: [:name, :preview, :add_ons], resource_name: "Side", edit: true %>
+  <%= render "shared/table", resources: @resource.sides, resource_fields: [:name, :preview], resource_name: "Side" %>
+  <%= render "shared/table", resources: @resource.properties, resource_fields: [:prop_type, :method, :name, :element_id, :back_element_id], resource_name: "Property" %>
+  <%= render "shared/table", resources: @resource.full_prints, resource_fields: [:name, :element_id], resource_name: "Full Print" %>
+  <%= render "shared/table", resources: @resource.sleeve_prints, resource_fields: [:name, :left_half_element_id, :right_half_element_id], resource_name: "Sleeve Print" %>
 <% end %>

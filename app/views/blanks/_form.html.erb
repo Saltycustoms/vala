@@ -1,27 +1,91 @@
 <%= render "shared/crude/form", resource_name: "Blank", resource: @resource, resource_fields: [:name, :brand] do |f| %>
-  <h3>Sides</h3>
-  <%= f.fields_for :sides do |side_form| %>
-    <div class="row">
-      <div class="small-5 column">
-        <%= side_form.input :name %>
-      </div>
-      <div class="small-5 column">
-        <div class="row">
-          <div class="small-6 column">
-            <%= side_form.hidden_field :attachment, value: side_form.object.cached_attachment_data %>
-            <%= side_form.input :attachment, as: :file %>
-          </div>
-          <div class="small-6 column">
-            <%= image_tag side_form.object.attachment_url if side_form.object.attachment.presence %>
-          </div>
+  <div class="callout" id="sides">
+    <h3>Sides <%= f.link_to_add "Add Side", :sides, class: "button warning", data: {target: "#sides"} %></h3>
+    <%= f.fields_for :sides, wrapper: false do |side_form| %>
+      <div class="row fields">
+        <div class="column">
+          <%= side_form.input :name %>
+        </div>
+        <div class="column">
+          <%= side_form.hidden_field :attachment, value: side_form.object.cached_attachment_data %>
+          <%= side_form.input :attachment, as: :file %>
+          <%= image_tag side_form.object.attachment_url, class: "side-image" if side_form.object.attachment.presence %>
+        </div>
+        <div class="shrink column">
+          <%= side_form.link_to_remove class: "button alert remove-button" do %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          <% end %>
         </div>
       </div>
-      <div class="small-2 column">
-        <%= side_form.link_to_remove class: "button alert remove-button" do %>
-          <i class="fa fa-times" aria-hidden="true"></i>
-        <% end %>
+    <% end %>
+  </div>
+
+  <div class="callout" id="properties">
+    <h3>Properties <%= f.link_to_add "Add Property", :properties, class: "button warning", data: {target: "#properties"} %></h3>
+    <%= f.fields_for :properties, wrapper: false do |prop_form| %>
+      <div class="row fields">
+        <div class="column">
+          <%= prop_form.input :prop_type, collection: Property.prop_types.keys.to_a %>
+        </div>
+        <div class="column">
+          <%= prop_form.input :method, collection: Property.methods.keys.to_a %>
+        </div>
+        <div class="column">
+          <%= prop_form.input :name %>
+        </div>
+        <div class="column">
+          <%= prop_form.input :element_id %>
+        </div>
+        <div class="column">
+          <%= prop_form.input :back_element_id %>
+        </div>
+        <div class="shrink column">
+          <%= prop_form.link_to_remove class: "button alert remove-button" do %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
-  <div><%= f.link_to_add "Add Side", :sides, class: "button warning" %></div>
+    <% end %>
+  </div>
+
+  <div class="callout" id="full_prints">
+    <h3>Full Prints <%= f.link_to_add "Add Full Print", :full_prints, class: "button warning", data: {target: "#full_prints"} %></h3>
+    <%= f.fields_for :full_prints, wrapper: false do |f_print_form| %>
+      <div class="row fields">
+        <div class="column">
+          <%= f_print_form.input :name %>
+        </div>
+        <div class="column">
+          <%= f_print_form.input :element_id %>
+        </div>
+        <div class="shrink column">
+          <%= f_print_form.link_to_remove class: "button alert remove-button" do %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="callout" id="sleeve_prints">
+    <h3>Sleeve Prints <%= f.link_to_add "Add Sleeve Print", :sleeve_prints, class: "button warning", data: {target: "#sleeve_prints"} %></h3>
+    <%= f.fields_for :sleeve_prints, wrapper: false do |s_print_form| %>
+      <div class="row fields">
+        <div class="column">
+          <%= s_print_form.input :name %>
+        </div>
+        <div class="column">
+          <%= s_print_form.input :left_half_element_id %>
+        </div>
+        <div class="column">
+          <%= s_print_form.input :right_half_element_id %>
+        </div>
+        <div class="shrink column">
+          <%= s_print_form.link_to_remove class: "button alert remove-button" do %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
