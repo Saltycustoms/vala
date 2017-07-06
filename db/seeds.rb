@@ -23,7 +23,7 @@ end
 @blank.properties.create(prop_type: "folded_woven_tag", method: "patching", name: "Bottom", element_id: "woven_tag1", back_element_id: "back_woven_tag2")
 @blank.properties.create(prop_type: "folded_woven_tag", method: "patching", name: "Bottom", element_id: "woven_tag2", back_element_id: "back_woven_tag2")
 
-@blank.sides.create(name: "Front", attachment: get_fixture_file("Visual-Generator-Shirt-01.svg"))
+@blank.sides.create(name: "Front", attachment: get_fixture_file("Visual-Generator-Shirt-01(white).svg"))
 @blank.sides.create(name: "Back", attachment: get_fixture_file("Visual-Generator-Shirt-01-backfake.svg"))
 
 @blank.prints.create(type: "Print::FullPrint", name: "Front", element_id: "full_print")
