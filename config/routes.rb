@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :properties
       resources :sides
       resources :sizes
+      resources :prints
     end
   end
 

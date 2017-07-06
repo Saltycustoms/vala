@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620081645) do
+ActiveRecord::Schema.define(version: 20170630034538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20170620081645) do
     t.index ["product_id"], name: "index_price_ranges_on_product_id", using: :btree
   end
 
+  create_table "prints", force: :cascade do |t|
+    t.jsonb    "metadata"
+    t.string   "type"
+    t.string   "name"
+    t.integer  "blank_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.integer  "blank_id"
@@ -62,11 +71,11 @@ ActiveRecord::Schema.define(version: 20170620081645) do
   create_table "properties", force: :cascade do |t|
     t.integer  "prop_type"
     t.string   "name"
-    t.string   "element_id"
-    t.integer  "side_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["side_id"], name: "index_properties_on_side_id", using: :btree
+    t.integer  "method"
+    t.jsonb    "metadata"
+    t.integer  "blank_id"
   end
 
   create_table "sides", force: :cascade do |t|
@@ -90,7 +99,6 @@ ActiveRecord::Schema.define(version: 20170620081645) do
   add_foreign_key "color_options", "products"
   add_foreign_key "price_ranges", "products"
   add_foreign_key "products", "blanks"
-  add_foreign_key "properties", "sides"
   add_foreign_key "sides", "blanks"
   add_foreign_key "sizes", "products"
 end

@@ -20,4 +20,10 @@ class Side < ApplicationRecord
     html_string += "</ul>"
     html_string.html_safe
   end
+
+  def as_json(*)
+    previous = super
+    previous[:attachment_url] = attachment_url
+    previous
+  end
 end
