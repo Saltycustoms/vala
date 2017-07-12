@@ -51,17 +51,46 @@
   <div class="callout" id="full_prints">
     <h3>Full Prints <%= f.link_to_add "Add Full Print", :full_prints, class: "button warning", data: {target: "#full_prints"} %></h3>
     <%= f.fields_for :full_prints, wrapper: false do |f_print_form| %>
-      <div class="row fields">
-        <div class="column">
-          <%= f_print_form.input :name %>
+      <div class="row fields align-middle">
+        <div class="small-11 column">
+          <div class="row">
+            <div class="column">
+              <%= f_print_form.input :name %>
+            </div>
+            <div class="column">
+              <%= f_print_form.input :element_id, label: "Element Id" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <%= f_print_form.input :in_width %>
+            </div>
+            <div class="column">
+              <%= f_print_form.input :in_height %>
+            </div>
+            <div class="column">
+              <%= f_print_form.input :mm_width %>
+            </div>
+            <div class="column">
+              <%= f_print_form.input :mm_height %>
+            </div>
+            <div class="column">
+              <%= f_print_form.input :px_width %>
+            </div>
+            <div class="column">
+              <%= f_print_form.input :px_height %>
+            </div>
+          </div>
         </div>
-        <div class="column">
-          <%= f_print_form.input :element_id %>
-        </div>
-        <div class="shrink column">
+
+        <div class="small-1 column">
           <%= f_print_form.link_to_remove class: "button alert remove-button" do %>
             <i class="fa fa-times" aria-hidden="true"></i>
           <% end %>
+        </div>
+
+        <div class="small-12 column">
+          <hr>
         </div>
       </div>
     <% end %>
@@ -70,20 +99,49 @@
   <div class="callout" id="sleeve_prints">
     <h3>Sleeve Prints <%= f.link_to_add "Add Sleeve Print", :sleeve_prints, class: "button warning", data: {target: "#sleeve_prints"} %></h3>
     <%= f.fields_for :sleeve_prints, wrapper: false do |s_print_form| %>
-      <div class="row fields">
-        <div class="column">
-          <%= s_print_form.input :name %>
+      <div class="row fields align-middle">
+        <div class="small-11 column">
+          <div class="row">
+            <div class="column">
+              <%= s_print_form.input :name %>
+            </div>
+            <div class="column">
+              <%= s_print_form.input :left_half_element_id, label: "Left Half Element Id" %>
+            </div>
+            <div class="column">
+              <%= s_print_form.input :right_half_element_id, label: "Right Half Element Id" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <%= s_print_form.input :in_width %>
+            </div>
+            <div class="column">
+              <%= s_print_form.input :in_height %>
+            </div>
+            <div class="column">
+              <%= s_print_form.input :mm_width %>
+            </div>
+            <div class="column">
+              <%= s_print_form.input :mm_height %>
+            </div>
+            <div class="column">
+              <%= s_print_form.input :px_width %>
+            </div>
+            <div class="column">
+              <%= s_print_form.input :px_height %>
+            </div>
+          </div>
         </div>
-        <div class="column">
-          <%= s_print_form.input :left_half_element_id %>
-        </div>
-        <div class="column">
-          <%= s_print_form.input :right_half_element_id %>
-        </div>
-        <div class="shrink column">
+
+        <div class="small-1 column">
           <%= s_print_form.link_to_remove class: "button alert remove-button" do %>
             <i class="fa fa-times" aria-hidden="true"></i>
           <% end %>
+        </div>
+
+        <div class="small-12 column">
+          <hr>
         </div>
       </div>
     <% end %>
