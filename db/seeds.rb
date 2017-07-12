@@ -26,10 +26,11 @@ end
 @blank.sides.create(name: "Front", attachment: get_fixture_file("Visual-Generator-Shirt-01(white).svg"))
 @blank.sides.create(name: "Back", attachment: get_fixture_file("Visual-Generator-Shirt-01-backfake.svg"))
 
-@blank.prints.create(type: "Print::FullPrint", name: "Front", element_id: "full_print")
-@blank.prints.create(type: "Print::FullPrint", name: "Back", element_id: "back_full_print")
-@blank.prints.create(type: "Print::SleevePrint", name: "Left Sleeve Print", left_half_element_id: "back_left_sleeve_print", right_half_element_id: "left_sleeve_print")
-@blank.prints.create(type: "Print::SleevePrint", name: "Right Sleeve Print", left_half_element_id: "right_sleeve_print", right_half_element_id: "back_right_sleeve_print")
+@blank.prints.create(type: "Print::FullPrint", name: "Front A3", element_id: "full_print", in_width: "11.7", in_height: "16.5", mm_width: "297", mm_height: "420", px_width: "415", px_height: "587")
+@blank.prints.create(type: "Print::FullPrint", name: "Front A4", element_id: "full_print_a4", in_width: "8.3", in_height: "11.75", mm_width: "210", mm_height: "297", px_width: "290.5", px_height: "410.9")
+@blank.prints.create(type: "Print::FullPrint", name: "Back", element_id: "back_full_print", in_width: "11.7", in_height: "16.5", mm_width: "297", mm_height: "420", px_width: "415", px_height: "587")
+@blank.prints.create(type: "Print::SleevePrint", name: "Left Sleeve Print", left_half_element_id: "back_left_sleeve_print", right_half_element_id: "left_sleeve_print", in_width: "3", in_height: "3", mm_width: "76.2", mm_height: "76.2", px_width: "106.7", px_height: "106.7")
+@blank.prints.create(type: "Print::SleevePrint", name: "Right Sleeve Print", left_half_element_id: "right_sleeve_print", right_half_element_id: "back_right_sleeve_print", in_width: "3", in_height: "3", mm_width: "76.2", mm_height: "76.2", px_width: "106.7", px_height: "106.7")
 
 @product = Product.create(name: "Gildan Unisex Tee", blank_id: @blank.id)
 
