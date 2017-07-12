@@ -2,7 +2,7 @@ class Api::V1::ApiV1Controller < ApplicationController
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
 
   def index
-    keys = params.keys.collect { |k| k if k.end_with?("_id")}.compact
+    keys = params.keys.collect { |k| k if k.end_with?("id")}.compact
     if keys
       @resources = resource_class.where(build_options(keys))
     else
