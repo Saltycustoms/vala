@@ -65,3 +65,4 @@ gem 'font-awesome-sass', '~> 4.7.0'
 gem 'kaminari'
 gem "autoprefixer-rails"
 gem 'rack-cors', :require => 'rack/cors'
+gem 'ransack', github: 'activerecord-hackery/ransack'
