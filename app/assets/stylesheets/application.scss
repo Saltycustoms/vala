@@ -42,8 +42,9 @@ dd {
   }
 }
 
-.bold {
+.selected {
   font-weight: $global-weight-bold;
+  border-bottom: 1px solid $black;
 }
 
 .side-image {
