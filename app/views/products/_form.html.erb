@@ -1,6 +1,8 @@
 <%= render "shared/crude/form", resource_name: "Product", resource: @resource, resource_fields: [:name] do |f| %>
   <%= f.association :blank %>
 
+  <%= f.input :currency, collection: Money::Currency.all.map{|curr| ["#{curr.name} (#{curr.iso_code})", curr.iso_code]} %>
+
   <div class="row">
     <div class="small-12 column">
       <%= label_tag("product_color_ids") do %>
