@@ -3,11 +3,11 @@ class Property < ApplicationRecord
   enum prop_type: {
     binding_collar: 0,
     backtape: 1,
-    sleeve_folded_woven_tag: 2,
-    folded_woven_tag: 3,
+    # sleeve_folded_woven_tag: 2,
+    # folded_woven_tag: 3,
     binding_sleeve: 4,
     double_needle_stitch: 5,
-    patch_woven_tag: 6,
+    # patch_woven_tag: 6,
     pocket: 7
   }
   enum method: {

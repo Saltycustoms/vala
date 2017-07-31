@@ -18,12 +18,12 @@ end
 @blank.properties.create(prop_type: "backtape", method: "substitution", name: "C 5002", element_id: "c5002", back_element_id: "back_c5002")
 @blank.properties.create(prop_type: "backtape", method: "substitution", name: "C 5035", element_id: "c5035", back_element_id: "back_c5035")
 @blank.properties.create(prop_type: "backtape", method: "substitution", name: "C 5039", element_id: "c5039", back_element_id: "back_c5039")
-@blank.properties.create(prop_type: "sleeve_folded_woven_tag", method: "patching", name: "Left Sleeve", element_id: "woven_tag1", back_element_id: "back_woven_tag1")
-@blank.properties.create(prop_type: "folded_woven_tag", method: "patching", name: "Bottom", element_id: "woven_tag2", back_element_id: "back_woven_tag2")
-@blank.properties.create(prop_type: "folded_woven_tag", method: "patching", name: "Bottom", element_id: "woven_tag1", back_element_id: "back_woven_tag2")
-@blank.properties.create(prop_type: "folded_woven_tag", method: "patching", name: "Bottom", element_id: "woven_tag2", back_element_id: "back_woven_tag2")
+# @blank.properties.create(prop_type: "sleeve_folded_woven_tag", method: "patching", name: "Left Sleeve", element_id: "woven_tag1", back_element_id: "back_woven_tag1")
+# @blank.properties.create(prop_type: "folded_woven_tag", method: "patching", name: "Bottom", element_id: "woven_tag2", back_element_id: "back_woven_tag2")
+# @blank.properties.create(prop_type: "folded_woven_tag", method: "patching", name: "Bottom", element_id: "woven_tag1", back_element_id: "back_woven_tag2")
+# @blank.properties.create(prop_type: "folded_woven_tag", method: "patching", name: "Bottom", element_id: "woven_tag2", back_element_id: "back_woven_tag2")
 
-@blank.sides.create(name: "Front", attachment: get_fixture_file("Visual-Generator-Shirt-01(white).svg"))
+@blank.sides.create(name: "Front", attachment: get_fixture_file("Visual-Generator-Shirt-01(withBackground).svg"))
 @blank.sides.create(name: "Back", attachment: get_fixture_file("Visual-Generator-Shirt-01-backfake.svg"))
 
 @blank.prints.create(type: "Print::FullPrint", name: "Front A3", element_id: "full_print", in_width: "11.7", in_height: "16.5", mm_width: "297", mm_height: "420", px_width: "415", px_height: "587")
@@ -31,6 +31,12 @@ end
 @blank.prints.create(type: "Print::FullPrint", name: "Back", element_id: "back_full_print", in_width: "11.7", in_height: "16.5", mm_width: "297", mm_height: "420", px_width: "415", px_height: "587")
 @blank.prints.create(type: "Print::SleevePrint", name: "Left Sleeve Print", left_half_element_id: "back_left_sleeve_print", right_half_element_id: "left_sleeve_print", in_width: "3", in_height: "3", mm_width: "76.2", mm_height: "76.2", px_width: "106.7", px_height: "106.7")
 @blank.prints.create(type: "Print::SleevePrint", name: "Right Sleeve Print", left_half_element_id: "right_sleeve_print", right_half_element_id: "back_right_sleeve_print", in_width: "3", in_height: "3", mm_width: "76.2", mm_height: "76.2", px_width: "106.7", px_height: "106.7")
+@blank.prints.create(type: "Print::WovenLabel", name: "Left Folded Woven Tag", element_id: "left_folded_woven_tag", in_width: "2.5", in_height: "1.26", mm_width: "63.5", mm_height: "32", px_width: "210.4", px_height: "106")
+@blank.prints.create(type: "Print::WovenLabel", name: "Right Folded Woven Tag", element_id: "right_folded_woven_tag", in_width: "2.5", in_height: "1.26", mm_width: "63.5", mm_height: "32", px_width: "210.4", px_height: "106")
+@blank.prints.create(type: "Print::WovenLabel", name: "Left Patch Woven Tag", element_id: "left_patch_woven_tag", in_width: "2.5", in_height: "1.26", mm_width: "63.5", mm_height: "32", px_width: "210.4", px_height: "106")
+@blank.prints.create(type: "Print::WovenLabel", name: "Right Patch Woven Tag", element_id: "right_patch_woven_tag", in_width: "2.5", in_height: "1.26", mm_width: "63.5", mm_height: "32", px_width: "210.4", px_height: "106")
+@blank.prints.create(type: "Print::WovenLabel", name: "Left Sleeve Folded Woven Tag", element_id: "left_sleeve_folded_woven_tag", in_width: "2.5", in_height: "1.26", mm_width: "63.5", mm_height: "32", px_width: "210.4", px_height: "106")
+@blank.prints.create(type: "Print::WovenLabel", name: "Right Sleeve Folded Woven Tag", element_id: "right_sleeve_folded_woven_tag", in_width: "2.5", in_height: "1.26", mm_width: "63.5", mm_height: "32", px_width: "210.4", px_height: "106")
 
 @product = Product.create(name: "Gildan Unisex Tee", blank_id: @blank.id)
 
