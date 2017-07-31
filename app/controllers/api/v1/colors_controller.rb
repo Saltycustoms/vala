@@ -8,4 +8,20 @@ class Api::V1::ColorsController < Api::V1::ApiV1Controller
       super
     end
   end
+
+  def create
+    if params[:color].present?
+      color = Color.new(color_params)
+      if color.save
+        render json: color
+      else
+        render json: {errors: color.errors}, status: 422
+      end
+    end
+  end
+
+  private
+  def color_params
+    params.require(:color).permit(:name, :hex, :pantone_code)
+  end
 end
