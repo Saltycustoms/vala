@@ -1,5 +1,5 @@
 <%= render "shared/crude/show", resource_name: "Product", resource: @resource, resource_fields: [:name, :currency, :blank_name, :custom_dye] do %>
-  <%= render "shared/table", resources: @resource.colors, resource_fields: [:name], resource_name: "Color" %>
+  <%= render "shared/table", resources: @resource.colors, resource_fields: [:name, :hex, :pantone_code], resource_name: "Color" %>
   <%= render "shared/table", resources: @resource.sizes, resource_fields: [:name], resource_name: "Size" %>
   <%= render "shared/table", resources: @resource.price_ranges, resource_fields: [:from_quantity, :to_quantity, :price_cents, :lower_rrp_cents, :higher_rrp_cents, :commission], resource_name: "Price Range" %>
 <% end %>
