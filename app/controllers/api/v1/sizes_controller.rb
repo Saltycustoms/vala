@@ -6,6 +6,6 @@ class Api::V1::SizesController < Api::V1::ApiV1Controller
     else
       @resources = resource_class.all
     end
-    render json: @resources.sort_by {|size| Size.sort_array.index(size.name)}
+    render json: @resources.sort_by {|size| Size.sort_array.index(size.name) || 0}
   end
 end

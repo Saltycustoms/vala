@@ -18,6 +18,7 @@ class Property < ApplicationRecord
   validates :name, presence: true
   jsonb_accessor :metadata,
     element_id: :string,
-    back_element_id: :string
+    back_element_id: :string,
+    hex: :string
   # validates :element_id, presence: true
 end
