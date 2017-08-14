@@ -12,11 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require scripts/toolkit
 //= require jquery_nested_form
 //= require turbolinks
 //= require_tree .
+//= require scripts/toolkit
 
 $(document).on('turbolinks:load', function() {
-  $(function(){ $(document).foundation(); });
 });
