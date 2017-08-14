@@ -1,6 +1,8 @@
 <div class="row column">
-  <h1><%=resource_name.pluralize%></h1>
-  <%= link_to "New #{resource_name}", [:new, resource_name.underscore], class: "button" %>
+  <%= render "shared/header", {title: resource_name.pluralize} %>
+  <% content_for :header_actions do %>
+    <%= link_to "New #{resource_name}", [:new, resource_name.underscore], class: "button" %>
+  <% end %>
 
   <table>
     <thead>
@@ -10,6 +12,7 @@
             <%= rf.to_s.humanize %>
           </th>
         <%end%>
+        <th colspan="3" class="text-center">Actions</th>
       </tr>
     </thead>
 
