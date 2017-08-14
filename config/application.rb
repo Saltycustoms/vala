@@ -17,5 +17,8 @@ module Vala
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
+
+    # Add toolkit to asset pipeline
+    config.assets.paths << Rails.root.join('vendor/toolkit')
   end
 end
