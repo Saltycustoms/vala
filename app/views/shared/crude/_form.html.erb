@@ -1,11 +1,16 @@
 <div class="row column">
-  <h1>
-  <% if resource.new_record? %>
-    <%= "New #{resource_name}" %>
-  <% else %>
-    <%= "Edit #{resource_name}" %>
+  <% content_for :header_actions do %>
+    <% if resource.persisted? %>
+      <%= link_to 'Show', [resource] %> |
+    <% end %>
+    <%= link_to 'Back', send("#{resource_name.downcase.pluralize}_path") %>
   <% end %>
-  </h1>
+  <% if resource.new_record? %>
+    <% title = "New #{resource_name}" %>
+  <% else %>
+    <% title = "Edit #{resource_name}" %>
+  <% end %>
+  <%= render "shared/header", {title: title} %>
 
   <%= simple_nested_form_for resource do |f| %>
     <% resource_fields.each do |field_name| %>
@@ -15,8 +20,4 @@
     <%= f.button :submit %>
   <% end %>
 
-  <% if resource.persisted? %>
-    <%= link_to 'Show', [resource] %> |
-  <% end %>
-  <%= link_to 'Back', send("#{resource_name.downcase.pluralize}_path") %>
 </div>

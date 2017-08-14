@@ -12,16 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
 //= require jquery_nested_form
 //= require turbolinks
 //= require_tree .
+//= require scripts/toolkit
 
 $(document).on('turbolinks:load', function() {
-  $(function(){ $(document).foundation(); });
-
-  $(function() {
-    pathing = $('ul.sidebar').data("controller") + '-' + $('ul.sidebar').data("action")
-    $('[data-pathing=' + pathing + ']').addClass('active')
-  })
 });

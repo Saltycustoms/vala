@@ -18,13 +18,7 @@
       </div>
     <% end -%>
 
-    <div class="row">
-      <div class="small-12 medium-3 large-2 column">
-        <%= render "layouts/sidebar" %>
-      </div>
-      <div class="small-12 medium-9 large-10 column">
-        <%= yield %>
-      </div>
-    </div>
+    <%= render "layouts/topbar" %>
+    <%= yield %>
   </body>
 </html>
