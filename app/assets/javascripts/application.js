@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require scripts/toolkit
 //= require jquery_nested_form
 //= require turbolinks
 //= require_tree .
