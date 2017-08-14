@@ -1,8 +1,8 @@
 <div class="row column">
-  <%= render "shared/header", {title: resource_name.pluralize} %>
   <% content_for :header_actions do %>
-    <%= link_to "New #{resource_name}", [:new, resource_name.underscore], class: "button" %>
+    <%= link_to "New #{resource_name}", [:new, resource_name.underscore] %>
   <% end %>
+  <%= render "shared/header", {title: resource_name.pluralize} %>
 
   <table>
     <thead>
