@@ -1,5 +1,11 @@
 @import 'styles/toolkit';
 
+.top-bar {
+  .active {
+    font-weight: bold;
+  }
+}
+
 // dd {
 //   padding-bottom: $global-padding;
 // }
