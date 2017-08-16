@@ -23,8 +23,8 @@ end
 # @blank.properties.create(prop_type: "folded_woven_tag", method: "patching", name: "Bottom", element_id: "woven_tag1", back_element_id: "back_woven_tag2")
 # @blank.properties.create(prop_type: "folded_woven_tag", method: "patching", name: "Bottom", element_id: "woven_tag2", back_element_id: "back_woven_tag2")
 
-@blank.sides.create(name: "Front", attachment: get_fixture_file("Visual-Generator-Shirt-01(withBackground).svg"))
-@blank.sides.create(name: "Back", attachment: get_fixture_file("Visual-Generator-Shirt-01-backfake.svg"))
+@blank.sides.create(name: "Front", attachment: get_fixture_file("Visual-Generator-Shirt-01(withBackground).svg"), down_the_collar: 2, artwork_width: 10, measurement_unit: "inch")
+@blank.sides.create(name: "Back", attachment: get_fixture_file("Visual-Generator-Shirt-01-backfake.svg"), down_the_collar: 1, artwork_width: 10, measurement_unit: "inch")
 
 @blank.prints.create(type: "Print::FullPrint", name: "Front A3", element_id: "full_print", in_width: "11.7", in_height: "16.5", mm_width: "297", mm_height: "420", px_width: "415", px_height: "587")
 @blank.prints.create(type: "Print::FullPrint", name: "Front A4", element_id: "full_print_a4", in_width: "8.3", in_height: "11.75", mm_width: "210", mm_height: "297", px_width: "290.5", px_height: "410.9")

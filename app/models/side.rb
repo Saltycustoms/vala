@@ -3,6 +3,10 @@ class Side < ApplicationRecord
   belongs_to :blank
   validates :name, presence: true
   validates :attachment, presence: true
+  jsonb_accessor :metadata,
+    down_the_collar: :integer,
+    artwork_width: :integer,
+    measurement_unit: :string
 
   def preview
     if attachment.exists?

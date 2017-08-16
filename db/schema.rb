@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727075424) do
+ActiveRecord::Schema.define(version: 20170815083602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20170727075424) do
     t.integer  "blank_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.json     "metadata"
     t.index ["blank_id"], name: "index_sides_on_blank_id", using: :btree
   end
 
