@@ -35,6 +35,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
 gem "jsonb_accessor", "1.0.0.beta.6"
 
 group :development, :test do
