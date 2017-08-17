@@ -4,7 +4,7 @@ class Size < ApplicationRecord
   before_save :upcase_name
 
   def self.sort_array
-    %w(XS S M L XL XXL XXXL)
+    %w(XS S M L XL 2XL 3XL 4XL)
   end
 
   def upcase_name
