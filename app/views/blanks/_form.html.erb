@@ -23,7 +23,7 @@
       <% end %>
     </div>
     <hr>
-    
+
     <div class="row column medium-text-right">
       <%= f.link_to_add :sides, class: "button", data: {target: "#sides"} do %>
         <i class="fa fa-plus"></i> Add Side
@@ -35,7 +35,7 @@
     <h3 class="callout-header">Properties</h3>
     <div id="properties">
       <%= f.fields_for :properties, wrapper: false do |prop_form| %>
-        <div class="row align-bottom fields">
+        <div class="row align-bottom fields properties-fields">
           <div class="column">
             <%= prop_form.input :prop_type, collection: Property.prop_types.keys.to_a %>
           </div>
@@ -60,7 +60,7 @@
       <% end %>
     </div>
     <hr>
-    
+
     <div class="row column medium-text-right">
       <%= f.link_to_add :properties, class: "button", data: {target: "#properties"} do %>
         <span class="fa fa-plus">&nbsp;</span>Add Property
@@ -110,6 +110,7 @@
             <% end %>
           </div>
         </div>
+
       <% end %>
     </div>
     <hr>
@@ -169,7 +170,7 @@
       <% end %>
     </div>
     <hr>
-    
+
     <div class="row column medium-text-right">
       <%= f.link_to_add :sleeve_prints, class: "button", data: {target: "#sleeve_prints"} do %>
         <span class="fa fa-plus">&nbsp;</span> Add Sleeve Print

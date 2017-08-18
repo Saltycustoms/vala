@@ -12,13 +12,14 @@
   </head>
 
   <body>
+    <%= render "layouts/topbar" %>
+
     <% flash.each do |name, msg| -%>
       <div class="row column">
         <%= content_tag :div, msg, class: "callout #{name}" %>
       </div>
     <% end -%>
 
-    <%= render "layouts/topbar" %>
     <%= yield %>
   </body>
 </html>
