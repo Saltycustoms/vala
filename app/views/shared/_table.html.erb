@@ -1,27 +1,29 @@
-<h3><%= resource_name.pluralize %></h3>
-<table>
-  <thead>
-    <tr>
-      <%resource_fields.each do |rf|%>
-        <th>
-          <%= rf.to_s.humanize %>
-        </th>
-      <%end%>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% resources.each do |resource| %>
+<div class="callout">
+  <h3 class="callout-header"><%= resource_name.pluralize %></h3>
+  <table>
+    <thead>
       <tr>
         <%resource_fields.each do |rf|%>
-          <td>
-            <%=resource.send(rf)%>
-          </td>
+          <th>
+            <%= rf.to_s.humanize %>
+          </th>
         <%end%>
-        <%  if defined?(edit) && edit %>
-          <td><%= link_to "Edit", [:edit, resource] %></td>
-        <% end %>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% resources.each do |resource| %>
+        <tr>
+          <%resource_fields.each do |rf|%>
+            <td>
+              <%=resource.send(rf)%>
+            </td>
+          <%end%>
+          <%  if defined?(edit) && edit %>
+            <td><%= link_to "Edit", [:edit, resource] %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
