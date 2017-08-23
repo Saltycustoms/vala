@@ -1,4 +1,5 @@
 class Side < ApplicationRecord
+  acts_as_paranoid
   include AttachmentUploader[:attachment]
   belongs_to :blank
   validates :name, presence: true

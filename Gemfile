@@ -70,3 +70,4 @@ gem 'kaminari'
 gem "autoprefixer-rails"
 gem 'rack-cors', :require => 'rack/cors'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+gem "paranoia", "~> 2.2"

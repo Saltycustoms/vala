@@ -1,4 +1,5 @@
 class Color < ApplicationRecord
+  acts_as_paranoid
   validates :name, presence: true, if: :pantone_blank?
   validates :hex, presence: true, if: :pantone_blank?
   has_many :color_options, dependent: :destroy

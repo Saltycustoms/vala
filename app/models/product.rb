@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  acts_as_paranoid
   belongs_to :blank, optional: true
   validates :name, presence: true
   validates :currency, presence: true

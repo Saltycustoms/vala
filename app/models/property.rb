@@ -1,4 +1,5 @@
 class Property < ApplicationRecord
+  acts_as_paranoid
   belongs_to :blank, optional: true
   enum prop_type: {
     binding_collar: 0,

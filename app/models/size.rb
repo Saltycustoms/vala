@@ -1,4 +1,5 @@
 class Size < ApplicationRecord
+  acts_as_paranoid
   belongs_to :product, optional: true
   validates :name, presence: true
   before_save :upcase_name

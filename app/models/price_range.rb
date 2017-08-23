@@ -1,4 +1,5 @@
 class PriceRange < ApplicationRecord
+  acts_as_paranoid
   belongs_to :product
   validates :from_quantity, presence: true, numericality: {greater_than_or_equal_to: 1}
   validates :to_quantity, presence: true, numericality: {greater_than_or_equal_to: 1}
