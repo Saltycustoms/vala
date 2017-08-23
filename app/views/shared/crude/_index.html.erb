@@ -12,7 +12,6 @@
             <%= rf.to_s.humanize %>
           </th>
         <%end%>
-        <th colspan="3" class="text-center">Actions</th>
       </tr>
     </thead>
 
@@ -21,17 +20,28 @@
         <tr>
           <%resource_fields.each do |rf|%>
             <td>
-              <%=resource.send(rf)%>
+              <% if rf == :name %>
+                <span class="subheader">#<%= resource.id %></span>
+                <%= link_to "#{resource.name}", [resource] %>
+                <div class="pull-right">
+                  <%= link_to [:edit, resource] do %>
+                    <span title="Edit" class="fa fa-pencil"></span>
+                  <% end %>
+                  &nbsp;
+                  <%if defined?(destroy) && destroy%>
+                    <%= link_to [resource], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <span title="Delete" class="fa fa-trash"></span>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% else %>
+                <%= resource.send(rf) %>
+              <% end %>
             </td>
           <%end%>
           <%if defined?(is_sti) && is_sti
             resource = resource.becomes(Object.const_get(resource_name))
           end%>
-          <td><%= link_to 'Show', [resource] %></td>
-          <td><%= link_to 'Edit', [:edit, resource] %></td>
-          <%if defined?(destroy) && destroy%>
-            <td><%= link_to "Destroy", [resource], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <%end%>
         </tr>
       <% end %>
     </tbody>

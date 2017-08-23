@@ -3,6 +3,6 @@ class ColorsController < ApplicationController
     fields:
       [:name, :hex, :pantone_code],
     presentation:
-      [:id, :name, :hex, :pantone_code]
+      [:name, :hex, :pantone_code]
   })
 end
