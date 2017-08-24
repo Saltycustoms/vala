@@ -1,7 +1,7 @@
 class Side < ApplicationRecord
   acts_as_paranoid
   include AttachmentUploader[:attachment]
-  belongs_to :blank
+  belongs_to :blank, optional: true
   validates :name, presence: true
   validates :attachment, presence: true
   jsonb_accessor :metadata,
