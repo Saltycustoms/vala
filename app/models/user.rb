@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   acts_as_paranoid
 
- devise :database_authenticatable,
+  devise :database_authenticatable,
       :recoverable, :rememberable, :trackable, :validatable,
       :omniauthable, :omniauth_providers => [:valkyrie]
 

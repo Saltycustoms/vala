@@ -12,6 +12,7 @@ module Dryer
   end
 
   included do
+    before_action :authorize_user, only: [:new, :create, :edit, :update, :destroy]
     before_action :set_resource, only: [:show, :edit, :update, :destroy]
   end
 
@@ -77,4 +78,9 @@ module Dryer
       params.require(resource_class.name.underscore.to_sym).permit(self.class.resource_fields)
     end
 
+    def authorize_user
+      if !current_user.has_any_role? :admin, :procurement, :director
+        redirect_to request.referrer ? request.referrer : root_path, notice: "You are not authorized."
+      end
+    end
 end
