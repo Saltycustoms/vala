@@ -73,3 +73,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem "paranoia", "~> 2.2"
 gem "paper_trail"
+gem 'devise'
+gem 'omniauth-oauth2'
+gem 'role_model'
+gem 'figaro'
