@@ -17,4 +17,11 @@ class Product < ApplicationRecord
       "None"
     end
   end
+
+  def as_json(*)
+    previous = super
+    previous[:colors] = colors
+    previous[:sizes] = sizes
+    previous
+  end
 end
