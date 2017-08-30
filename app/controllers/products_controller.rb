@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authorize_user, only: [:new, :create, :edit, :update, :destroy]
+  
   dried_options ({
     fields:
       [:name, :blank_id, :currency, :custom_dye, sizes_attributes: [:id, :name, :_destroy], color_ids: [],
@@ -6,4 +8,10 @@ class ProductsController < ApplicationController
     presentation:
       [:name, :custom_dye, :currency]
   })
+
+  def authorize_user
+    if !current_user.has_any_role? :admin, :procurement, :director
+      redirect_to request.referrer ? request.referrer : root_path, notice: "You are not authorized."
+    end
+  end
 end
