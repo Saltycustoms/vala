@@ -76,5 +76,4 @@ module Dryer
     def resource_params
       params.require(resource_class.name.underscore.to_sym).permit(self.class.resource_fields)
     end
-
 end
