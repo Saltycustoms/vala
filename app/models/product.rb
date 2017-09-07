@@ -22,6 +22,7 @@ class Product < ApplicationRecord
     previous = super
     previous[:colors] = colors
     previous[:sizes] = sizes
+    previous[:price_ranges] = price_ranges
     previous
   end
 end
