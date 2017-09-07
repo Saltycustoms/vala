@@ -64,3 +64,15 @@
 //   max-width: 80px;
 //   max-height: 80px;
 // }
+
+.input.error {
+ input {
+   background: rgba(#D50000, .3);
+   border-color: #D50000;
+ }
+
+ label,
+ small {
+   color: #D50000;
+ }
+}
