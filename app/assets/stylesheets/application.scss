@@ -43,22 +43,22 @@
 //   max-height: 100px;
 // }
 
-// .color {
-//   &-checkbox {
-//     appearance: none;
-//   }
-//   &-box {
-//     cursor: pointer;
-//     i {
-//       border: 1px solid $medium-gray;
-//     }
-//   }
-// }
+.color {
+  &-checkbox {
+    appearance: none;
+  }
+  &-box {
+    cursor: pointer;
+    i {
+      border: 1px solid #cacaca;
+    }
+  }
+}
 
-// .selected {
-//   font-weight: $global-weight-bold;
-//   border-bottom: 1px solid $black;
-// }
+.selected {
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
 
 // .side-image {
 //   max-width: 80px;
