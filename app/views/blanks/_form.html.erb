@@ -51,6 +51,9 @@
           <div class="column">
             <%= prop_form.input :back_element_id %>
           </div>
+          <div class="column">
+            <%= prop_form.input :hex %>
+          </div>
           <div class="small-1 column">
             <%= prop_form.link_to_remove class: "button alert remove-button" do %>
               <i class="fa fa-times" aria-hidden="true"></i>
@@ -174,6 +177,59 @@
     <div class="row column medium-text-right">
       <%= f.link_to_add :sleeve_prints, class: "button", data: {target: "#sleeve_prints"} do %>
         <span class="fa fa-plus">&nbsp;</span> Add Sleeve Print
+      <% end %>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3 class="callout-header">Woven Label Prints</h3>
+    <div id="woven_label_prints">
+      <%= f.fields_for :woven_label_prints, wrapper: false do |s_print_form| %>
+        <div class="row fields align-middle">
+          <div class="small-11 column">
+            <div class="row">
+              <div class="column">
+                <%= s_print_form.input :name %>
+              </div>
+              <div class="column">
+                <%= s_print_form.input :element_id, label: "Element Id" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column">
+                <%= s_print_form.input :in_width %>
+              </div>
+              <div class="column">
+                <%= s_print_form.input :in_height %>
+              </div>
+              <div class="column">
+                <%= s_print_form.input :mm_width %>
+              </div>
+              <div class="column">
+                <%= s_print_form.input :mm_height %>
+              </div>
+              <div class="column">
+                <%= s_print_form.input :px_width %>
+              </div>
+              <div class="column">
+                <%= s_print_form.input :px_height %>
+              </div>
+            </div>
+          </div>
+
+          <div class="small-1 column">
+            <%= s_print_form.link_to_remove class: "button alert remove-button" do %>
+              <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+
+    <div class="row column medium-text-right">
+      <%= f.link_to_add :woven_label_prints, class: "button", data: {target: "#woven_label_prints"} do %>
+        <span class="fa fa-plus">&nbsp;</span> Add Woven Print
       <% end %>
     </div>
   </div>
