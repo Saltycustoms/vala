@@ -1,6 +1,7 @@
 <%= render "shared/crude/show", resource_name: "Blank", resource: @resource, resource_fields: [:name, :brand] do %>
-  <%= render "shared/table", resources: @resource.sides, resource_fields: [:name, :preview], resource_name: "Side" %>
-  <%= render "shared/table", resources: @resource.properties, resource_fields: [:prop_type, :method, :name, :element_id, :back_element_id], resource_name: "Property" %>
+  <%= render "shared/table", resources: @resource.sides, resource_fields: [:name, :preview, :down_the_collar, :artwork_width, :measurement_unit], resource_name: "Side" %>
+  <%= render "shared/table", resources: @resource.properties, resource_fields: [:prop_type, :method, :name, :element_id, :back_element_id, :hex], resource_name: "Property" %>
   <%= render "shared/table", resources: @resource.full_prints, resource_fields: [:name, :element_id, :in_width, :in_height, :mm_width, :mm_height, :px_width, :px_height], resource_name: "Full Print" %>
   <%= render "shared/table", resources: @resource.sleeve_prints, resource_fields: [:name, :left_half_element_id, :right_half_element_id, :in_width, :in_height, :mm_width, :mm_height, :px_width, :px_height], resource_name: "Sleeve Print" %>
+  <%= render "shared/table", resources: @resource.woven_label_prints, resource_fields: [:name, :element_id, :in_width, :in_height, :mm_width, :mm_height, :px_width, :px_height], resource_name: "Woven Label Print" %>
 <% end %>
