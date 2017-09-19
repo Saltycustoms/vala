@@ -9,9 +9,28 @@
           </div>
           <div class="column">
             <div class="callout">
-              <%= side_form.input :name %>
-              <%= side_form.hidden_field :attachment, value: side_form.object.cached_attachment_data %>
-              <%= side_form.input :attachment, as: :file %>
+              <div class="row">
+                <div class="column">
+                  <%= side_form.input :name %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="column">
+                  <%= side_form.hidden_field :attachment, value: side_form.object.cached_attachment_data %>
+                  <%= side_form.input :attachment, as: :file %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="column">
+                  <%= side_form.input :down_the_collar %>
+                </div>
+                <div class="column">
+                  <%= side_form.input :artwork_width %>
+                </div>
+                <div class="column">
+                  <%= side_form.input :measurement_unit %>
+                </div>
+              </div>
             </div>
           </div>
           <div class="column small-1">
