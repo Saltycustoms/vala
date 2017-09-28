@@ -3,9 +3,9 @@ class ColorsController < ApplicationController
 
   dried_options ({
     fields:
-      [:name, :hex, :pantone_code],
+      [:name, :hex, :pantone_code, :label],
     presentation:
-      [:name, :hex, :pantone_code]
+      [:name, :hex, :pantone_code, :label]
   })
 
   def authorize_user
