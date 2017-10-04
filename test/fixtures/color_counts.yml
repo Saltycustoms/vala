@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  color_count: 1
+  price_cents: 1
+  currency: MyString
+  price_range_id: 1
+
+two:
+  color_count: 1
+  price_cents: 1
+  currency: MyString
+  price_range_id: 1

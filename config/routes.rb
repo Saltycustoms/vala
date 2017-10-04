@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       end
       resources :blanks
       resources :color_options
+      resources :color_counts
       resources :price_ranges
       resources :properties
       resources :sides

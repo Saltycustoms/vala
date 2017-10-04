@@ -71,17 +71,27 @@
                   <%= pr_form.input :to_quantity, label: "To qty" %>
                 </div>
                 <div class="small-6 large-4 column">
-                  <%= pr_form.input :price %>
+                  <%#= pr_form.input :price %>
                 </div>
                 <div class="small-6 large-4 column">
-                  <%= pr_form.input :lower_rrp %>
+                  <%#= pr_form.input :lower_rrp %>
                 </div>
                 <div class="small-6 large-4 column">
-                  <%= pr_form.input :higher_rrp %>
+                  <%#= pr_form.input :higher_rrp %>
                 </div>
                 <div class="small-6 large-4 column">
                   <%= pr_form.input :commission, label: "Commission (decimal)", placeholder: "3.4" %>
                 </div>
+                <div class="small-12 large-6 column">
+                  <%= pr_form.fields_for :color_counts do |color_count| %>
+                    <%= color_count.input :color_count %>
+                    <%= color_count.input :price %>
+                    <%= color_count.link_to_remove class: "button alert remove-button" do %>
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+                <%= pr_form.link_to_add "Add Color Count", :color_counts, class: "button warning" %>
               </div>
             </div>
             <div class="small-1 column">

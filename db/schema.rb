@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170928075732) do
+ActiveRecord::Schema.define(version: 20171003091259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20170928075732) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_blanks_on_deleted_at", using: :btree
+  end
+
+  create_table "color_counts", force: :cascade do |t|
+    t.integer  "color_count"
+    t.integer  "price_cents"
+    t.string   "currency"
+    t.integer  "price_range_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "color_options", force: :cascade do |t|
