@@ -20,9 +20,9 @@ class Product < ApplicationRecord
 
   def as_json(*)
     previous = super
-    previous[:colors] = colors
-    previous[:sizes] = sizes
-    previous[:price_ranges] = price_ranges
+    previous[:colors] = colors.with_deleted
+    previous[:sizes] = sizes.with_deleted
+    previous[:price_ranges] = price_ranges.with_deleted
     previous
   end
 end
