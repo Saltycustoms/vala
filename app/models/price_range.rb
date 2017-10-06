@@ -32,4 +32,13 @@ class PriceRange < ApplicationRecord
   def higher_rrp_amount
     humanized_money_with_symbol higher_rrp
   end
+
+  def color_counts_detail
+    html_string = "<ul>"
+    color_counts.each do |color_count|
+      html_string += "<li><strong>#{color_count.color_count}:</strong> #{humanized_money_with_symbol color_count.price_cents}</li>"
+    end
+    html_string += "</ul>"
+    html_string.html_safe
+  end
 end
