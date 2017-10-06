@@ -27,8 +27,8 @@ else
   }
 
   Shrine.storages = {
-    cache: Shrine::Storage::S3.new(prefix: "athena_cache", **s3_options),
-    store: Shrine::Storage::S3.new(prefix: "athena_store", **s3_options),
+    cache: Shrine::Storage::S3.new(prefix: "athena_cache_dev", **s3_options),
+    store: Shrine::Storage::S3.new(prefix: "athena_store_dev", **s3_options),
   }
 end
 
