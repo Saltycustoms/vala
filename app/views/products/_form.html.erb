@@ -36,74 +36,69 @@
       </div>
     <% end %>
   </div>
-
-  <div class="row">
-    <div class="medium-4 column">
-      <div class="callout">
-        <h3 class="callout-header">Sizes</h3>
-        <%= f.fields_for :sizes, wrapper: false do |size_form| %>
-          <div class="row align-bottom fields">
-            <div class="column">
-              <%= size_form.input :name %>
+  
+  <div class="callout">
+    <h3 class="callout-header">Sizes</h3>
+    <div class="row" id="sizes-form">
+      <%= f.fields_for :sizes, wrapper: false do |size_form| %>
+        <div class="column small-6 medium-4 large-3 fields">
+          <div class="row">
+            <div class="small-9 column sizes-input">
+            <%= size_form.input :name %>
             </div>
-            <div class="small-3 column">
+            <div class="small-3 column align-self-bottom sizes-remove">
               <%= size_form.link_to_remove class: "button alert remove-button" do %>
                 <i class="fa fa-times" aria-hidden="true"></i>
               <% end %>
             </div>
           </div>
-        <% end %>
-
-        <%= f.link_to_add "Add Size", :sizes, class: "button warning" %>
-      </div>
+        </div>
+      <% end %>
     </div>
-    <div class="medium-8 column">
-      <div class="callout">
-        <h3 class="callout-header">Price Range</h3>
-        <%= f.fields_for :price_ranges do |pr_form| %>
-          <div class="row align-middle fields">
-            <div class="column">
-              <div class="row">
-                <div class="small-6 large-4 column">
-                  <%= pr_form.input :from_quantity, label: "From qty" %>
-                </div>
-                <div class="small-6 large-4 column">
-                  <%= pr_form.input :to_quantity, label: "To qty" %>
-                </div>
-                <div class="small-6 large-4 column">
-                  <%#= pr_form.input :price %>
-                </div>
-                <div class="small-6 large-4 column">
-                  <%#= pr_form.input :lower_rrp %>
-                </div>
-                <div class="small-6 large-4 column">
-                  <%#= pr_form.input :higher_rrp %>
-                </div>
-                <div class="small-6 large-4 column">
-                  <%= pr_form.input :commission, label: "Commission (decimal)", placeholder: "3.4" %>
-                </div>
-                <div class="small-12 large-6 column">
-                  <%= pr_form.fields_for :color_counts do |color_count| %>
-                    <%= color_count.input :color_count %>
-                    <%= color_count.input :price %>
-                    <%= color_count.link_to_remove class: "button alert remove-button" do %>
-                      <i class="fa fa-times" aria-hidden="true"></i>
-                    <% end %>
-                  <% end %>
-                </div>
-                <%= pr_form.link_to_add "Add Color Count", :color_counts, class: "button warning" %>
+    <p><%= f.link_to_add "Add Size", :sizes, class: "button warning", data: { target: "#sizes-form" } %></p>
+  </div>
+  
+  <div class="callout">
+    <h3 class="callout-header">Price Range</h3>
+    <div id="price-ranges-form">
+      <%= f.fields_for :price_ranges, wrapper: false do |pr_form| %>
+        <div class="price-ranges-container fields">
+          <div class="row">
+          <div class="column small-6 medium-3">
+            <%= pr_form.input :from_quantity, label: "From qty" %>
+          </div>
+          <div class="column small-6 medium-3">
+            <%= pr_form.input :to_quantity, label: "To qty" %>
+          </div>
+          <div class="column small-6 medium-3">
+            <%= pr_form.input :commission, label: "Commission (decimal)", placeholder: "3.4" %>
+          </div>
+          <div class="column small-6 medium-3 align-self-bottom">
+            <%= pr_form.link_to_remove class: "button alert remove-button" do %>
+              <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
+          </div>
+        </div>
+          <%= pr_form.link_to_add "Add Color Count", :color_counts, class: "button success" %>
+          
+          <%= pr_form.fields_for :color_counts do |color_count| %>
+            <div class="row">
+              <div class="small-5 column">
+                <%= color_count.input :color_count %>
+              </div>
+              <div class="small-5 column">
+                <%= color_count.input :price %>
+              </div>
+              <div class="small-2 column align-self-bottom">
+                <%= color_count.link_to_remove class: "button alert remove-button" do %>
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                <% end %>
               </div>
             </div>
-            <div class="small-1 column">
-              <%= pr_form.link_to_remove class: "button alert remove-button" do %>
-                <i class="fa fa-times" aria-hidden="true"></i>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-
-        <%= f.link_to_add "Add Price Range", :price_ranges, class: "button warning" %>
-      </div>
+          <% end %> 
+        </div>
+      <% end %>
     </div>
+    <p><%= f.link_to_add "Add Price Range", :price_ranges, class: "button warning", data: { target: "#price-ranges-form" } %></p>
   </div>
 <% end %>
