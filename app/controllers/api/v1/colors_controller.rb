@@ -20,11 +20,6 @@ class Api::V1::ColorsController < Api::V1::ApiV1Controller
     end
   end
 
-  def by_label
-    @colors = Color.where(label: params[:id])
-    render json: @colors
-  end
-
   private
   def color_params
     params.require(:color).permit(:name, :hex, :pantone_code)

@@ -3,11 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :products
-      resources :colors do
-        member do
-          get :by_label
-        end
-      end
+      resources :colors
       resources :blanks
       resources :color_options
       resources :price_ranges
@@ -19,7 +15,11 @@ Rails.application.routes.draw do
   end
 
   resources :products
-  resources :colors
+  resources :colors do
+    member do
+      get :by_label
+    end
+  end
   resources :blanks
   resources :histories
   resources :api_keys
