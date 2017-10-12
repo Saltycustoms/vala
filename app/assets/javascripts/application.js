@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require_tree .
 //= require scripts/toolkit
+//= require jssha256.js
 
 $(document).on('turbolinks:load', function() {
 });
