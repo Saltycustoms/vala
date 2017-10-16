@@ -13,4 +13,10 @@ class ColorsController < ApplicationController
       redirect_to request.referrer ? request.referrer : root_path, notice: "You are not authorized."
     end
   end
+
+
+  def by_label
+    @colors = Color.where(label: params[:id])
+    render json: @colors
+  end
 end

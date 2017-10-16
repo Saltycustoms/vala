@@ -17,7 +17,7 @@ $(document).on "turbolinks:load", ->
 
   $('#colorLabel').change ->
     label = $(this).val();
-    $.get('/api/v1/colors/' + label + '/by_label', (data) ->
+    $.get('/colors/' + label + '/by_label', (data) ->
       $("#colorContainer").empty();
       toAppend = ""
       $.each data, (index, value)->
