@@ -1,7 +1,6 @@
 class PriceRange < ApplicationRecord
   include MoneyRails::ActionViewExtension
   acts_as_paranoid
-  has_many :color_counts
   belongs_to :product, optional: true
   validates :from_quantity, presence: true, numericality: {greater_than_or_equal_to: 1}
   validates :to_quantity, presence: true, numericality: {greater_than_or_equal_to: 1}
@@ -9,7 +8,6 @@ class PriceRange < ApplicationRecord
   # monetize :price_cents, with_model_currency: :currency, numericality: { greater_than_or_equal_to: 0 }
   # monetize :lower_rrp_cents, with_model_currency: :currency, numericality: { greater_than_or_equal_to: 0 }
   # monetize :higher_rrp_cents, with_model_currency: :currency, numericality: { greater_than_or_equal_to: 0 }
-  accepts_nested_attributes_for :color_counts, allow_destroy: true
 
   def currency
     if product
@@ -21,24 +19,11 @@ class PriceRange < ApplicationRecord
   #   humanized_money_with_symbol price
   # end
 
-  def price_amount(color_count)
-    humanized_money_with_symbol color_counts.where(color_count: color_count).take.price
-  end
-
   def lower_rrp_amount
     humanized_money_with_symbol lower_rrp
   end
 
   def higher_rrp_amount
     humanized_money_with_symbol higher_rrp
-  end
-
-  def color_counts_detail
-    html_string = "<ul>"
-    color_counts.each do |color_count|
-      html_string += "<li><strong>#{color_count.color_count}:</strong> #{humanized_money_with_symbol color_count.price_cents}</li>"
-    end
-    html_string += "</ul>"
-    html_string.html_safe
   end
 end

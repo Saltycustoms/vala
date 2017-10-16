@@ -1,0 +1,2 @@
+class PrintMethod < ApplicationRecord
+end

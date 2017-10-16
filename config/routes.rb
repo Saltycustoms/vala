@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :prints
     end
   end
-
+  resources :print_methods
   resources :products
   resources :colors do
     member do

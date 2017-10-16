@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010040325) do
+ActiveRecord::Schema.define(version: 20171016033923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,13 +31,30 @@ ActiveRecord::Schema.define(version: 20171010040325) do
     t.index ["deleted_at"], name: "index_blanks_on_deleted_at", using: :btree
   end
 
-  create_table "color_counts", force: :cascade do |t|
-    t.integer  "color_count"
+  create_table "blocks", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "print_method_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["print_method_id"], name: "index_blocks_on_print_method_id", using: :btree
+  end
+
+  create_table "color_count_price_ranges", force: :cascade do |t|
+    t.integer  "from"
+    t.integer  "to"
     t.integer  "price_cents"
     t.string   "currency"
-    t.integer  "price_range_id"
+    t.integer  "color_count_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["color_count_id"], name: "index_color_count_price_ranges_on_color_count_id", using: :btree
+  end
+
+  create_table "color_counts", force: :cascade do |t|
+    t.integer  "color_count"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "block_id"
   end
 
   create_table "color_options", force: :cascade do |t|
@@ -75,6 +92,12 @@ ActiveRecord::Schema.define(version: 20171010040325) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_price_ranges_on_deleted_at", using: :btree
     t.index ["product_id"], name: "index_price_ranges_on_product_id", using: :btree
+  end
+
+  create_table "print_methods", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "prints", force: :cascade do |t|
@@ -178,6 +201,8 @@ ActiveRecord::Schema.define(version: 20171010040325) do
     t.index ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
   end
 
+  add_foreign_key "blocks", "print_methods"
+  add_foreign_key "color_count_price_ranges", "color_counts"
   add_foreign_key "color_options", "colors"
   add_foreign_key "color_options", "products"
   add_foreign_key "price_ranges", "products"

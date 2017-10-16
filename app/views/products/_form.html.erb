@@ -64,38 +64,21 @@
       <%= f.fields_for :price_ranges, wrapper: false do |pr_form| %>
         <div class="price-ranges-container fields">
           <div class="row">
-          <div class="column small-6 medium-3">
-            <%= pr_form.input :from_quantity, label: "From qty" %>
-          </div>
-          <div class="column small-6 medium-3">
-            <%= pr_form.input :to_quantity, label: "To qty" %>
-          </div>
-          <div class="column small-6 medium-3">
-            <%= pr_form.input :commission, label: "Commission (decimal)", placeholder: "3.4" %>
-          </div>
-          <div class="column small-6 medium-3 align-self-bottom">
-            <%= pr_form.link_to_remove class: "button alert remove-button" do %>
-              <i class="fa fa-times" aria-hidden="true"></i>
-            <% end %>
-          </div>
-        </div>
-          <%= pr_form.link_to_add "Add Color Count", :color_counts, class: "button success" %>
-          
-          <%= pr_form.fields_for :color_counts do |color_count| %>
-            <div class="row">
-              <div class="small-5 column">
-                <%= color_count.input :color_count %>
-              </div>
-              <div class="small-5 column">
-                <%= color_count.input :price %>
-              </div>
-              <div class="small-2 column align-self-bottom">
-                <%= color_count.link_to_remove class: "button alert remove-button" do %>
-                  <i class="fa fa-times" aria-hidden="true"></i>
-                <% end %>
-              </div>
+            <div class="column small-6 medium-3">
+              <%= pr_form.input :from_quantity, label: "From qty" %>
             </div>
-          <% end %> 
+            <div class="column small-6 medium-3">
+              <%= pr_form.input :to_quantity, label: "To qty" %>
+            </div>
+            <div class="column small-6 medium-3">
+              <%= pr_form.input :commission, label: "Commission (decimal)", placeholder: "3.4" %>
+            </div>
+            <div class="column small-6 medium-3 align-self-bottom">
+              <%= pr_form.link_to_remove class: "button alert remove-button" do %>
+                <i class="fa fa-times" aria-hidden="true"></i>
+              <% end %>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
