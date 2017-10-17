@@ -10,31 +10,17 @@ class CurrencyExchangesController < ApplicationController
 
   def update_prices
     currency_exchange = CurrencyExchange.find(params[:id])
-    if currency_exchange.from == "MYR" && currency_exchange.to == "SGD"
-      Money.add_rate("MYR", "SGD", currency_exchange.rate)
-    elsif currency_exchange.from == "SGD" && currency_exchange.to == "MYR"
-      Money.add_rate("MYR", "SGD", 1 / currency_exchange.rate)
-    else
-      Money.add_rate("MYR", "SGD", 1)
-    end
+    Money.add_rate(currency_exchange.from, currency_exchange.to, currency_exchange.rate)
     if params[:resource] == "color_count"
       ColorCount.all.each do |color_count|
-        color_count.color_count_price_ranges.where(currency: "MYR").each do |myr_price_range|
-          color_count.color_count_price_ranges.where(currency: "SGD").each do |sgd_price_range|
-            if (myr_price_range.from == sgd_price_range.from) && (myr_price_range.to == sgd_price_range.to)
-              sgd_price_range.update(price: myr_price_range.price.exchange_to("SGD"))
-            end
-          end
+        color_count.color_count_price_ranges.where(currency: currency_exchange.from).each do |from_price_range|
+          color_count.color_count_price_ranges.where(from: from_price_range.from, to: from_price_range.to, currency: currency_exchange.to).take&.update(price: from_price_range.price.exchange_to(currency_exchange.to))
         end
       end
     elsif params[:resource] == "product"
       Product.all.each do |product|
-        product.price_ranges.where(currency: "MYR").each do |myr_price_range|
-          product.price_ranges.where(currency: "SGD").each do |sgd_price_range|
-            if (myr_price_range.from_quantity == sgd_price_range.from_quantity) && (myr_price_range.to_quantity == sgd_price_range.to_quantity)
-              sgd_price_range.update(price: myr_price_range.price.exchange_to("SGD"))
-            end
-          end
+        product.price_ranges.where(currency: currency_exchange.from).each do |from_price_range|
+          product.price_ranges.where(from_quantity: from_price_range.from_quantity, to_quantity: from_price_range.to_quantity, currency: currency_exchange.to).take&.update(price: from_price_range.price.exchange_to(currency_exchange.to))
         end
       end
     end

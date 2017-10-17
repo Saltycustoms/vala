@@ -47,13 +47,13 @@
                         <% end %>
                       </div>
                       <div class="column">
-                        <%= button_to [:update_prices, resource], method: :put, params: {resource: "color_count"}, data: { confirm: "Are you sure you want to change all existing SGD prices of COLOR COUNTS to MYR prices multiplied with this rate?"} do %>
-                          <span title="Change all existing SGD prices of COLOR COUNTS to MYR prices multiplied with this rate."><i class="fa fa-print" aria-hidden="true"></i></span>
+                        <%= button_to [:update_prices, resource], method: :put, params: {resource: "color_count"}, data: { confirm: "Are you sure you want to change all existing #{resource.to} prices of COLOR COUNTS to #{resource.from} prices multiplied with this rate?"} do %>
+                          <span title="Change all existing <%= resource.to %> prices of COLOR COUNTS to <%= resource.from %> prices multiplied with this rate."><i class="fa fa-print" aria-hidden="true"></i></span>
                         <% end %>
                       </div>
                       <div class="column">
-                        <%= button_to [:update_prices, resource], method: :put, params: {resource: "product"}, data: { confirm: "Are you sure you want to change all existing SGD prices of PRODUCTS to MYR prices multiplied with this rate?"} do %>
-                          <span title="Change all existing SGD prices of PRODUCTS to MYR prices multiplied with this rate."><i class="fa fa-black-tie" aria-hidden="true"></i></span>
+                        <%= button_to [:update_prices, resource], method: :put, params: {resource: "product"}, data: { confirm: "Are you sure you want to change all existing #{resource.to} prices of PRODUCTS to #{resource.from} prices multiplied with this rate?"} do %>
+                          <span title="Change all existing <%= resource.to %> prices of PRODUCTS to <%= resource.from %> prices multiplied with this rate."><i class="fa fa-black-tie" aria-hidden="true"></i></span>
                         <% end %>
                       </div>
                     </div>
