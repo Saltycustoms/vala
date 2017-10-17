@@ -1,0 +1,3 @@
+<%= render "shared/crude/show", resource_name: controller.resource_class.name, resource: @resource, resource_fields: [:name] do %>
+  <%= render "shared/table", resources: @resource.blocks, resource_fields: [:name], resource_name: "Block" %>
+<% end %>

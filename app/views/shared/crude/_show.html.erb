@@ -3,7 +3,7 @@
     <% if current_user.has_any_role? :admin, :procurement, :director %>
       <%= link_to 'Edit', [:edit, resource] %> |
     <% end %>
-    <%= link_to 'Back', send("#{resource_name.downcase.pluralize}_path") %>
+    <%= link_to 'Back', send("#{resource_name.underscore.pluralize}_path") %>
   <% end %>
   <%= render "shared/header", {title: "#{resource_name} ##{resource.id}"} %>
   <dl>

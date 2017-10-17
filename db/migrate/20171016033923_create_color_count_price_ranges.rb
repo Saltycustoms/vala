@@ -3,7 +3,7 @@ class CreateColorCountPriceRanges < ActiveRecord::Migration[5.0]
     create_table :color_count_price_ranges do |t|
       t.integer :from
       t.integer :to
-      t.integer :price_cents
+      t.integer :price_cents, default: 0
       t.string :currency
       t.belongs_to :color_count, foreign_key: true
 

@@ -5,7 +5,7 @@ class PriceRange < ApplicationRecord
   validates :from_quantity, presence: true, numericality: {greater_than_or_equal_to: 1}
   validates :to_quantity, presence: true, numericality: {greater_than_or_equal_to: 1}
   validates :commission, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 1, allow_nil: true}
-  # monetize :price_cents, with_model_currency: :currency, numericality: { greater_than_or_equal_to: 0 }
+  monetize :price_cents, with_model_currency: :currency, numericality: { greater_than_or_equal_to: 0 }
   # monetize :lower_rrp_cents, with_model_currency: :currency, numericality: { greater_than_or_equal_to: 0 }
   # monetize :higher_rrp_cents, with_model_currency: :currency, numericality: { greater_than_or_equal_to: 0 }
 

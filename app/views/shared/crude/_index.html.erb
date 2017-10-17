@@ -1,11 +1,10 @@
 <div class="row column">
   <% content_for :header_actions do %>
     <% if current_user.has_any_role? :admin, :procurement, :director %>
-      <%= link_to "New #{resource_name}", [:new, resource_name.underscore] %>
+      <%= link_to "New #{resource_name.titleize}", [:new, resource_name.underscore] %>
     <% end %>
   <% end %>
-  <%= render "shared/header", {title: resource_name.pluralize} %>
-
+  <%= render "shared/header", {title: resource_name.titleize.pluralize} %>
   <table>
     <thead>
       <tr>
@@ -20,11 +19,11 @@
     <tbody>
       <% resources.each do |resource| %>
         <tr>
-          <%resource_fields.each do |rf|%>
+          <%resource_fields.each_with_index do |rf, index|%>
             <td>
-              <% if rf == :name %>
+              <% if index == 0 %>
                 <span class="subheader">#<%= resource.id %></span>
-                <%= link_to "#{resource.name}", [resource] %>
+                <%= link_to "#{resource.send(rf)}", [resource] %>
                 <% if current_user.has_any_role? :admin, :procurement, :director %>
                   <div class="pull-right">
                     <%= link_to [:edit, resource] do %>

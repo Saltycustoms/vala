@@ -15,6 +15,12 @@ Rails.application.routes.draw do
     end
   end
   resources :print_methods
+  resources :currency_exchanges do
+    member do
+      put "update_color_count_price_ranges"
+    end
+  end
+  resources :blocks
   resources :products
   resources :colors do
     member do

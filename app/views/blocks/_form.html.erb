@@ -1,0 +1,55 @@
+<%= render "shared/crude/form", resource_name: controller.resource_class.name, resource: @resource, resource_fields: [] do |f| %>
+  <p><strong><%= @resource.display_name %></strong></p>
+  <%= f.input :name %>
+  <%= label_tag :selected_currency, "Select Currency For Price" %>
+  <%= select_tag :selected_currency, options_for_select([["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]] + (Money::Currency.all.map{|curr| ["#{curr.name} (#{curr.iso_code})", curr.iso_code]} - [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]]), "MYR") %>
+  <div class="callout">
+    <h3 class="callout-header">Color Count</h3>
+    <%= f.fields_for :color_counts do |color_count_form| %>
+      <div class="row align-middle">
+        <div class="column">
+          <%= color_count_form.input :color_count %>
+        </div>
+        <div class="small-1 column align-self-bottom">
+          <%= color_count_form.link_to_remove class: "button alert remove-button" do %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="color-counts-prices-form">
+        <h3 class="callout-header">Color Count Prices</h3>
+        <%= color_count_form.fields_for :color_count_price_ranges do |price_range_form| %>
+          <div class="row align-middle">
+            <div class="column">
+              <%= price_range_form.input :from %>
+            </div>
+            <div class="column">
+              <%= price_range_form.input :to %>
+            </div>
+            <div class="column">
+              <%= price_range_form.input :price %>
+            </div>
+            <div class="column">
+              <%= price_range_form.input :currency, collection: [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]] + (Money::Currency.all.map{|curr| ["#{curr.name} (#{curr.iso_code})", curr.iso_code]} - [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]]), input_html: {class: "currency-select"} %>
+            </div>
+            <div class="small-1 column align-self-bottom">
+              <%= price_range_form.link_to_remove class: "button alert remove-button" do %>
+                <i class="fa fa-times" aria-hidden="true"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <div class="row column">
+          <%= color_count_form.link_to_add :color_count_price_ranges, class: "button" do %>
+            <span class="fa fa-plus">&nbsp;</span> Add Price
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div class="row column">
+      <%= f.link_to_add :color_counts, class: "button" do %>
+        <span class="fa fa-plus">&nbsp;</span> Add Color Count
+      <% end %>
+    </div>
+  </div>
+<% end %>

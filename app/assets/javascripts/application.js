@@ -19,4 +19,13 @@
 //= require jssha256.js
 
 $(document).on('turbolinks:load', function() {
+	$(document).on('nested:fieldAdded:color_count_price_ranges', function(event){
+		var selected_currency = $("#selected_currency").val()
+		$(event.target).find('.currency-select').val(selected_currency)
+	})
+
+	$(document).on('nested:fieldAdded:price_ranges', function(event){
+		var selected_currency = $("#selected_currency").val()
+		$(event.target).find('.currency-select').val(selected_currency)
+	})
 });

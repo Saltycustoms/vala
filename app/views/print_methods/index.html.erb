@@ -1,0 +1,9 @@
+<%=
+  render "shared/crude/index",
+  resources: @resources,
+  resource_name: controller.resource_class.name,
+  resource_fields: [:name, :block_names],
+  edit: true,
+  show: true,
+  destroy: true
+%>

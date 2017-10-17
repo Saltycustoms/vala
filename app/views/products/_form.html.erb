@@ -60,28 +60,35 @@
   
   <div class="callout">
     <h3 class="callout-header">Price Range</h3>
+    <%= label_tag :selected_currency, "Select Currency For Price" %>
+    <%= select_tag :selected_currency, options_for_select([["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]] + (Money::Currency.all.map{|curr| ["#{curr.name} (#{curr.iso_code})", curr.iso_code]} - [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]]), "MYR") %>
     <div id="price-ranges-form">
-      <%= f.fields_for :price_ranges, wrapper: false do |pr_form| %>
-        <div class="price-ranges-container fields">
-          <div class="row">
-            <div class="column small-6 medium-3">
-              <%= pr_form.input :from_quantity, label: "From qty" %>
+      <%= f.fields_for :price_ranges do |pr_form| %>
+        <div class="price-ranges-container row">
+          <div class="small-11 column">
+            <div class="row">
+              <div class="small-6 medium-3 column">
+                <%= pr_form.input :from_quantity, label: "From qty" %>
+              </div>
+              <div class="small-6 medium-3 column">
+                <%= pr_form.input :to_quantity, label: "To qty" %>
+              </div>
+              <div class="small-6 medium-3 column">
+                <%= pr_form.input :price %>
+              </div>
+              <div class="small-6 medium-3 column">
+                <%= pr_form.input :currency, collection: [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]] + (Money::Currency.all.map{|curr| ["#{curr.name} (#{curr.iso_code})", curr.iso_code]} - [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]]), input_html: {class: "currency-select"} %>
+              </div>
             </div>
-            <div class="column small-6 medium-3">
-              <%= pr_form.input :to_quantity, label: "To qty" %>
-            </div>
-            <div class="column small-6 medium-3">
-              <%= pr_form.input :commission, label: "Commission (decimal)", placeholder: "3.4" %>
-            </div>
-            <div class="column small-6 medium-3 align-self-bottom">
-              <%= pr_form.link_to_remove class: "button alert remove-button" do %>
-                <i class="fa fa-times" aria-hidden="true"></i>
-              <% end %>
-            </div>
+          </div>
+          <div class="small-1 column align-self-middle">
+            <%= pr_form.link_to_remove class: "button alert remove-button" do %>
+              <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
           </div>
         </div>
       <% end %>
     </div>
-    <p><%= f.link_to_add "Add Price Range", :price_ranges, class: "button warning", data: { target: "#price-ranges-form" } %></p>
+    <p><%= f.link_to_add "Add Price Range", :price_ranges, class: "button warning" %></p>
   </div>
 <% end %>

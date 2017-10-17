@@ -1,0 +1,22 @@
+<%= render "shared/crude/form", resource_name: controller.resource_class.name, resource: @resource, resource_fields: [:name] do |f| %>
+  <div class="callout">
+    <h3 class="callout-header">Blocks</h3>
+    <%= f.fields_for :blocks do |block_form| %>
+      <div class="row align-middle">
+        <div class="column">
+          <%= block_form.input :name %>
+        </div>
+        <div class="small-1 column align-self-bottom">
+          <%= block_form.link_to_remove class: "button alert remove-button" do %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div class="row column">
+      <%= f.link_to_add :blocks, class: "button" do %>
+        <span class="fa fa-plus">&nbsp;</span> Add Block
+      <% end %>
+    </div>
+  </div>
+<% end %>

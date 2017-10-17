@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016033923) do
+ActiveRecord::Schema.define(version: 20171017041441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,11 +42,11 @@ ActiveRecord::Schema.define(version: 20171016033923) do
   create_table "color_count_price_ranges", force: :cascade do |t|
     t.integer  "from"
     t.integer  "to"
-    t.integer  "price_cents"
+    t.integer  "price_cents",    default: 0
     t.string   "currency"
     t.integer  "color_count_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["color_count_id"], name: "index_color_count_price_ranges_on_color_count_id", using: :btree
   end
 
@@ -79,6 +79,14 @@ ActiveRecord::Schema.define(version: 20171016033923) do
     t.index ["deleted_at"], name: "index_colors_on_deleted_at", using: :btree
   end
 
+  create_table "currency_exchanges", force: :cascade do |t|
+    t.string   "from"
+    t.string   "to"
+    t.float    "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "price_ranges", force: :cascade do |t|
     t.integer  "from_quantity"
     t.integer  "to_quantity"
@@ -90,6 +98,7 @@ ActiveRecord::Schema.define(version: 20171016033923) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.datetime "deleted_at"
+    t.string   "currency"
     t.index ["deleted_at"], name: "index_price_ranges_on_deleted_at", using: :btree
     t.index ["product_id"], name: "index_price_ranges_on_product_id", using: :btree
   end
