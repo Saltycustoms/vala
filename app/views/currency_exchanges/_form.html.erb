@@ -1,5 +1,5 @@
 <%= render "shared/crude/form", resource_name: controller.resource_class.name, resource: @resource, resource_fields: [] do |f| %>
-  <%= f.input :from, collection: [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]] + (Money::Currency.all.map{|curr| ["#{curr.name} (#{curr.iso_code})", curr.iso_code]} - [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]])%>
-  <%= f.input :to, collection: [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]] + (Money::Currency.all.map{|curr| ["#{curr.name} (#{curr.iso_code})", curr.iso_code]} - [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]])%>
+  <%= f.input :from, collection: ["MYR", "SGD"] %>
+  <%= f.input :to, collection: ["MYR", "SGD"] %>
   <%= f.input :rate%>
 <% end %>

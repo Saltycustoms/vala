@@ -9,12 +9,6 @@ class PriceRange < ApplicationRecord
   # monetize :lower_rrp_cents, with_model_currency: :currency, numericality: { greater_than_or_equal_to: 0 }
   # monetize :higher_rrp_cents, with_model_currency: :currency, numericality: { greater_than_or_equal_to: 0 }
 
-  def currency
-    if product
-      product.currency
-    end
-  end
-
   # def price_amount
   #   humanized_money_with_symbol price
   # end

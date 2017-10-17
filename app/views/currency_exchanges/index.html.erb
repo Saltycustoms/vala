@@ -1,9 +1,75 @@
-<%=
-  render "shared/crude/index",
-  resources: @resources,
-  resource_name: controller.resource_class.name,
-  resource_fields: controller.class.resource_fields,
-  edit: true,
-  show: true,
-  destroy: true
-%>
+<%  resources = @resources %>
+<% resource_name = controller.resource_class.name %>
+<%resource_fields = controller.class.resource_fields %>
+<% edit = true %>
+<% show = true %>
+<% destroy = true %>
+
+<div class="row column">
+  <% content_for :header_actions do %>
+    <% if current_user.has_any_role? :admin, :procurement, :director %>
+      <%= link_to "New #{resource_name.titleize}", [:new, resource_name.underscore] %>
+    <% end %>
+  <% end %>
+  <%= render "shared/header", {title: resource_name.titleize.pluralize} %>
+  <table>
+    <thead>
+      <tr>
+        <%resource_fields.each do |rf|%>
+          <th>
+            <%= rf.to_s.humanize %>
+          </th>
+        <%end%>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% resources.each do |resource| %>
+        <tr>
+          <%resource_fields.each_with_index do |rf, index|%>
+            <td>
+              <% if index == 0 %>
+                <span class="subheader">#<%= resource.id %></span>
+                <%= link_to "#{resource.send(rf)}", [resource] %>
+                <% if current_user.has_any_role? :admin, :procurement, :director %>
+                  <div class="pull-right">
+                    <div class="row">
+                      <div class="column">                  
+                        <%= link_to [:edit, resource] do %>
+                          <span title="Edit" class="fa fa-pencil"></span>
+                        <% end %>
+                      </div>
+                      <div class="column">
+                        <%if defined?(destroy) && destroy%>
+                          <%= link_to [resource], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                            <span title="Delete" class="fa fa-trash"></span>
+                          <% end %>
+                        <% end %>
+                      </div>
+                      <div class="column">
+                        <%= button_to [:update_prices, resource], method: :put, params: {resource: "color_count"}, data: { confirm: "Are you sure you want to change all existing SGD prices of COLOR COUNTS to MYR prices multiplied with this rate?"} do %>
+                          <span title="Change all existing SGD prices of COLOR COUNTS to MYR prices multiplied with this rate."><i class="fa fa-print" aria-hidden="true"></i></span>
+                        <% end %>
+                      </div>
+                      <div class="column">
+                        <%= button_to [:update_prices, resource], method: :put, params: {resource: "product"}, data: { confirm: "Are you sure you want to change all existing SGD prices of PRODUCTS to MYR prices multiplied with this rate?"} do %>
+                          <span title="Change all existing SGD prices of PRODUCTS to MYR prices multiplied with this rate."><i class="fa fa-black-tie" aria-hidden="true"></i></span>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% else %>
+                <%= resource.send(rf) %>
+              <% end %>
+            </td>
+          <%end%>
+          <%if defined?(is_sti) && is_sti
+            resource = resource.becomes(Object.const_get(resource_name))
+          end%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%=paginate resources%>
+</div>

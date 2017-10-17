@@ -92,4 +92,7 @@
 
 .color-counts-prices-form {
   margin-left: 4rem;
+  input, select, .remove-button {
+    margin-bottom: 0.5rem;
+  }
 }
