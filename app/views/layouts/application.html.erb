@@ -12,7 +12,9 @@
   </head>
 
   <body>
-    <%= render "layouts/topbar" %>
+    <% unless content_for?(:no_topbar) %>
+      <%= render "layouts/topbar" %>
+    <% end %>
 
     <% flash.each do |name, msg| -%>
       <div class="row column">
