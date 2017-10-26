@@ -1,0 +1,29 @@
+<%= render "form", title: "Area Locations for #{@delivery_method.name}", delivery_method: @delivery_method, back_path: edit_delivery_method_path(@delivery_method), button: true do |f| %>
+	
+  <div class="row">
+    <div class="column"><strong>Location</strong></div>
+    <div class="column"><strong>Area</strong></div>
+    <div class="column small-1"><strong>Remove</strong></div>
+  </div>
+
+	<%= f.fields_for :area_locations do |area_location_form| %>
+    <div class="row align-middle">
+      <div class="column">
+        <%= area_location_form.input :location, label: false %>
+      </div>
+      <div class="column">
+        <%= area_location_form.input :area, label: false %>
+      </div>
+      <div class="column small-1">
+      	<%= area_location_form.link_to_remove class: "button alert remove-button" do %>
+          <i class="fa fa-times" aria-hidden="true"></i>
+        <% end %>
+      </div>
+		</div>
+	<% end %>
+	<div class="row column">
+    <%= f.link_to_add :area_locations, class: "button warning" do %>
+      <span class="fa fa-plus">&nbsp;</span> Location & Area
+    <% end %>
+  </div>
+<% end %>

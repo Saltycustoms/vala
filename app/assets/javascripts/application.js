@@ -28,4 +28,15 @@ $(document).on('turbolinks:load', function() {
 		var selected_currency = $("#selected_currency").val()
 		$(event.target).find('.currency-select').val(selected_currency)
 	})
+
+	$(document).on('nested:fieldAdded:charges', function(event){
+		var selected_currency = $("#selected_currency").val()
+		var selected_area = $("#selected_area").val()
+		var selected_type = $("#selected_type").val()
+		var selected_product_type = $("#selected_product_type").val()
+		$(event.target).find('.currency-select').val(selected_currency)
+		$(event.target).find('.area-select').val(selected_area)
+		$(event.target).find('.type-input').val(selected_type)
+		$(event.target).find('.product-type-select').val(selected_product_type)
+	})
 });

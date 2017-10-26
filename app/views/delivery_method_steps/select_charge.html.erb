@@ -1,0 +1,9 @@
+<%= render "form", title: "Select Charge type for #{@delivery_method.name}", delivery_method: @delivery_method, back_path: previous_wizard_path(delivery_method_id: @delivery_method.id), button: false do |f| %>
+    <div class="row align-center">
+      <div class="small-6">
+        <%= f.submit "Flat Weight Charge", class: "expanded button" %>
+        <%= f.submit "Per Kg Weight Charge", class: "expanded button secondary" %>
+        <%= f.submit "Per Quantity Charge", class: "expanded button warning" %>
+      </div>
+    </div>
+<% end %>

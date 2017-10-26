@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   dried_options ({
     fields:
-      [:name, :blank_id, :currency, :custom_dye, :simple_configurator_product, sizes_attributes: [:id, :name, :_destroy], color_ids: [],
+      [:name, :blank_id, :currency, :custom_dye, :simple_configurator_product, :product_type_id, sizes_attributes: [:id, :name, :_destroy], color_ids: [],
       price_ranges_attributes: [:id, :from_quantity, :to_quantity, :price, :lower_rrp, :higher_rrp, :commission, :currency, :_destroy]],
     presentation:
       [:name, :custom_dye, :currency]

@@ -1,0 +1,10 @@
+<% if @delivery_method.charges.present? %>
+	<% back_path = wizard_path(:add_locations_and_area, {delivery_method_id: @delivery_method.id}) %>
+<% else%>
+	<% back_path = previous_wizard_path(delivery_method_id: @delivery_method.id)%>
+<% end %>
+
+<%= render "form", title: "Add #{@type} for #{@delivery_method.name}", delivery_method: @delivery_method, back_path: back_path, button: true do |f| %>
+	<%= render "#{@type.underscore.split("/").last}_form", f: f %>
+	<% end %>
+

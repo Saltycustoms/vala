@@ -1,0 +1,40 @@
+<%= render "shared/crude/show", resource_name: controller.resource_class.name, resource: @resource, resource_fields: controller.class.resource_fields do %>
+	
+	<%= render "shared/table", resources: @resource.area_locations, resource_fields: [:location, :area], resource_name: "Locations & Area", table_links: [{link_name: "Edit", link_path: delivery_method_step_path("add_locations_and_area", delivery_method_id: @resource.id)}] %>
+
+	<%= render "shared/table", resources: @resource.charges, resource_fields: [:from, :to, :value, :area, :currency, :product_type_name], resource_name: @resource.charge_name, table_links: [{link_name: "Edit", link_path: delivery_method_step_path("add_charges", delivery_method_id: @resource.id)}] %>
+	
+	<div class="callout">
+	  <div class="row">
+	    <div class="column">
+	      <h3 class="callout-header">Additional Charge</h3>
+	    </div>
+	      <div class="column small-6 medium-4 large-2 text-right">
+	        <%= link_to "Edit", delivery_method_step_path("additional_charge", delivery_method_id: @resource.id) %>
+	      </div>
+	  </div>
+	  <table>
+	    <thead>
+	      <tr>
+          <th>Surchage</th>
+          <th>Buffer</th>
+          <th>Enable</th>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+	    	<tr>
+	    		<td>
+	    			<%= @resource.additional_charge&.surchage %>
+	    		</td>
+	    		<td>
+	    			<%= @resource.additional_charge&.buffer %>
+	    		</td>
+	    		<td>
+	    			<%= @resource.additional_charge&.enable %>
+	    		</td>
+	    	</tr>
+	    </tbody>
+	  </table>
+	</div>
+<% end %>

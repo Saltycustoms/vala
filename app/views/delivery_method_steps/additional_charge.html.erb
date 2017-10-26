@@ -1,0 +1,7 @@
+<%= render "form", title: "Additional Charge type for #{@delivery_method.name}", delivery_method: @delivery_method, back_path: previous_wizard_path(delivery_method_id: @delivery_method.id), button: true do |f| %>
+	<%= f.fields_for :additional_charge do |additional_charge_form| %>
+      <%= additional_charge_form.input :surchage %>
+      <%= additional_charge_form.input :buffer %>
+      <%= additional_charge_form.input :enable %>
+	<% end %>
+<% end %>

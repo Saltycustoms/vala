@@ -34,7 +34,7 @@
               <%= price_range_form.input :to, label: false %>
             </div>
             <div class="column">
-              <%= price_range_form.input :price, label: false %>
+              <%= price_range_form.input :price, as: :integer, label: false %>
             </div>
             <div class="column">
               <%= price_range_form.input :currency, label: false, collection: [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]] + (Money::Currency.all.map{|curr| ["#{curr.name} (#{curr.iso_code})", curr.iso_code]} - [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]]), input_html: {class: "currency-select"} %>

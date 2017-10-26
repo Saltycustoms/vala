@@ -1,0 +1,20 @@
+<div class="row column">
+  <% content_for :header_actions do %>
+    <% if delivery_method.persisted? %>
+      <%= link_to 'Show', [delivery_method] %> |
+    <% end %>
+    <%= link_to 'Back', back_path %>
+  <% end %>
+  <%= render "shared/header", {title: title } %>
+  
+  <%= simple_nested_form_for delivery_method, url: wizard_path(nil, {delivery_method_id: delivery_method.id}) do |f| %>
+    <%= yield f %>
+    <% if button %>
+      <div class="row align-right">
+        <div class="column small-3">
+          <%= f.submit "Next", class: "button expanded" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

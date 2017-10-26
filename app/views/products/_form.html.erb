@@ -1,6 +1,6 @@
 <%= render "shared/crude/form", resource_name: "Product", resource: @resource, resource_fields: [:name, :custom_dye, :simple_configurator_product] do |f| %>
   <%= f.association :blank %>
-
+  <%= f.association :product_type %>
   <%= f.input :currency, collection: Money::Currency.all.map{|curr| ["#{curr.name} (#{curr.iso_code})", curr.iso_code]} %>
 
   <div class="row">

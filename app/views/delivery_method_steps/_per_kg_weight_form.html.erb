@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="column">
+    <%= label_tag :selected_currency, "Currency" %>
+    <%= select_tag :selected_currency, options_for_select([["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]] + (Money::Currency.all.map{|curr| ["#{curr.name} (#{curr.iso_code})", curr.iso_code]} - [["Malaysian Ringgit (MYR)", "MYR"], ["Singapore Dollar (SGD)", "SGD"]]), "MYR") %>
+  </div>
+  <div class="column">
+    <%= label_tag :selected_area, "Area" %>
+    <%= select_tag :selected_area, options_for_select(@delivery_method.area_locations.map{ |area_loc| area_loc.area }.uniq) %>
+  </div>
+</div>
+
+<%= hidden_field_tag :selected_type, @type %>
+
+<div class="row">
+  <div class="column"><strong>From</strong></div>
+  <div class="column"><strong>To</strong></div>
+  <div class="column"><strong>Value</strong></div>
+  <div class="column"><strong>Area</strong></div>
+  <div class="column"><strong>Currency</strong></div>
+  <div class="column small-1"><strong>Remove</strong></div>
+</div>
+
+<%= f.fields_for :charges do |charge_form| %>
+  <%= charge_form.input :type, as: :hidden, input_html: { class: "type-input" } %>
+  <div class="row align-middle">
+    <div class="column">
+      <%= charge_form.input :from, label: false %>
+    </div>
+    <div class="column">
+      <%= charge_form.input :to, label: false %>
+    </div>
+    <div class="column">
+      <%= charge_form.input :value, as: :integer, label: false %>
+    </div>
+    <div class="column">
+      <%= charge_form.input :area, label: false, collection: @delivery_method.area_locations.map{ |area_loc| area_loc.area }.uniq, input_html: { class: "area-select" } %>
+    </div>
+    <div class="column">
+      <%= charge_form.input :currency, collection: ["MYR", "SGD"] + (Money::Currency.all.map{|curr| curr.iso_code} - ["MYR", "SGD"]), label: false, input_html: { class: "currency-select" } %>
+    </div>
+    <div class="column small-1">
+    	<%= charge_form.link_to_remove class: "button alert remove-button" do %>
+        <i class="fa fa-times" aria-hidden="true"></i>
+      <% end %>
+    </div>
+	</div>
+<% end %>
+<div class="row column">
+  <%= f.link_to_add :charges, class: "button warning" do %>
+    <span class="fa fa-plus">&nbsp;</span> Charge
+  <% end %>
+</div>

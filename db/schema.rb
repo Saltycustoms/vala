@@ -10,16 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017041441) do
+ActiveRecord::Schema.define(version: 20171026081200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "additional_charges", force: :cascade do |t|
+    t.integer  "delivery_method_id"
+    t.integer  "surchage"
+    t.integer  "buffer"
+    t.boolean  "enable",             default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token"
     t.string   "app"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "area_locations", force: :cascade do |t|
+    t.string   "area"
+    t.string   "location"
+    t.integer  "delivery_method_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "blanks", force: :cascade do |t|
@@ -37,6 +54,19 @@ ActiveRecord::Schema.define(version: 20171017041441) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["print_method_id"], name: "index_blocks_on_print_method_id", using: :btree
+  end
+
+  create_table "charges", force: :cascade do |t|
+    t.float    "from"
+    t.float    "to"
+    t.integer  "value_cents",        default: 0
+    t.string   "area"
+    t.string   "currency"
+    t.integer  "delivery_method_id"
+    t.integer  "product_type_id"
+    t.string   "type"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "color_count_price_ranges", force: :cascade do |t|
@@ -87,6 +117,12 @@ ActiveRecord::Schema.define(version: 20171017041441) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "delivery_methods", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "price_ranges", force: :cascade do |t|
     t.integer  "from_quantity"
     t.integer  "to_quantity"
@@ -120,6 +156,13 @@ ActiveRecord::Schema.define(version: 20171017041441) do
     t.index ["deleted_at"], name: "index_prints_on_deleted_at", using: :btree
   end
 
+  create_table "product_types", force: :cascade do |t|
+    t.string   "name"
+    t.float    "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.integer  "blank_id"
@@ -129,6 +172,7 @@ ActiveRecord::Schema.define(version: 20171017041441) do
     t.boolean  "custom_dye",                  default: false
     t.datetime "deleted_at"
     t.boolean  "simple_configurator_product", default: false
+    t.integer  "product_type_id"
     t.index ["blank_id"], name: "index_products_on_blank_id", using: :btree
     t.index ["deleted_at"], name: "index_products_on_deleted_at", using: :btree
   end

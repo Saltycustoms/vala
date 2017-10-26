@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   acts_as_paranoid
+  belongs_to :product_type, optional: true
   belongs_to :blank, optional: true
   validates :name, presence: true
   validates :currency, presence: true
@@ -24,5 +25,9 @@ class Product < ApplicationRecord
     previous[:sizes] = sizes.with_deleted
     previous[:price_ranges] = price_ranges.with_deleted
     previous
+  end
+
+  def product_type_name
+    product_type&.name
   end
 end

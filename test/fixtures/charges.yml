@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from: 1.5
+  to: 1.5
+  value_cents: 1
+  area: MyString
+  currency: MyString
+  delivery_method_id: 1
+  product_type_id: 1
+  type: 
+
+two:
+  from: 1.5
+  to: 1.5
+  value_cents: 1
+  area: MyString
+  currency: MyString
+  delivery_method_id: 1
+  product_type_id: 1
+  type: 

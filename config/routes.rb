@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   end
   resources :blocks
   resources :products
+  resources :product_types
+  resources :delivery_methods
+  resources :delivery_method_steps
   resources :colors do
     member do
       get :by_label
