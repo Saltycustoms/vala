@@ -17,6 +17,7 @@
 //= require_tree .
 //= require scripts/toolkit
 //= require jssha256.js
+//= require feedback.js
 
 $(document).on('turbolinks:load', function() {
 });
